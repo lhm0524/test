@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+
+@using ZY.WEIKE.BLL
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>主页</title>
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit" />
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="icon" type="image/png" href="/Content/assets/i/favicon.png" />
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="icon" sizes="192x192" href="/Content/assets/i/app-icon72x72@2x.png" />
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="apple-touch-icon-precomposed" href="/Content/assets/i/app-icon72x72@2x.png" />
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="/Content/assets/i/app-icon72x72@2x.png" />
+<meta name="msapplication-TileColor" content="#0e90d2" />
+
+<!-- Amaze UI CSS -->
+<link rel="stylesheet" href="/Content/assets/css/amazeui.min.css" />
+<link rel="stylesheet" href="/Content/assets/css/Common.css" />
+<style>
+    .bg {
+        height: 50px;
+        width: 50px;
+        line-height: 50px;
+        background-color: #0a6999;
+        border-radius: 100%;
+        text-align: center;
+        margin: 0 auto;
+        color: #FFFFFF;
+    }
+
+    .am-header-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1010;
+    }
+</style>
+</head>
+<body>
+    <!--头部-->
+    <header data-am-widget="header" class="am-header am-header-default" style="margin-bottom: 1px;">
+        <div class="am-header-left am-header-nav">
+            <a href="" class="">
+                <i class="am-header-icon am-icon-home"></i>
+                <a>微课</a>
+            </a>
+        </div>
+        <div class="am-header-right am-header-nav">
+            <a href="#" class="">
+                <i class="am-header-icon am-icon-search"></i>
+            </a>
+        </div>
+    </header>
+    <!--轮播图-->
+    <div class="am-slider am-slider-default" id="my_silder">
+        <ul class="am-slides">
+            <li>
+                <img src="~/Content/Image/1.jpg" />
+            </li>
+            <li>
+                <img src="~/Content/Image/2.jpg" />
+            </li>
+            <li>
+                <img src="~/Content/Image/3.jpg" />
+            </li>
+            <li>
+                <img src="~/Content/Image/4.jpg" />
+            </li>
+        </ul>
+    </div>
+    <!--分类概览-->
+    <div class="am-g" style="margin: 0 auto">
+        @{foreach (ZY.WEIKE.MODAL.ColleageModel item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["list_colleagemodel"])
+        {
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3" style="text-align: center">
+                <div id="colleage_@item.Id" class="navigate am-g">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="bg">@item.Id</div>
+                    </div>
+                    <div id="name_@item.Id" class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        @item.Name
+                    </div>
+                </div>
+
+            </div>
+        }
+        }
+        <div id="more" class="am-u-sm-3 am-u-md-3 am-u-lg-3" style="text-align: center">
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                    <div class="bg">...</div>
+                </div>
+                <div class="am-u-md-12 am-u-lg-12 am-u-sm-12">
+                    <div>更多课程</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--最新视频-->
+    <div data-am-widget="list_new" class="am-list-news am-list-news-default">
+        <div class="am-list-news-hd am-cf">
+            <!--带更多链接-->
+            <a>
+                <h2>最新视频</h2>
+                <span class="am-list-news-more am-fr">更多 &raquo;</span>
+            </a>
+        </div>
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.WeiKeModel>)ViewData["list_new"])
+                {
+
+                    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                        <div class="am-u-sm-4 am-list-thumb">
+                            <a href="/Play/Index/@item.Id">
+                                <img src="/Home/ImgPath/@item.Id" />
+                            </a>
+                        </div>
+                        <div class=" am-u-sm-8 am-list-main">
+                            <h3 class="am-list-item-hd"><a href="/Play/Index/@item.Id" class="">@item.Name</a></h3>
+                            <div class="am-list-item-text">@item.Description</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div id="navigationbar" data-am-widget="navbar" class="am-navbar am-cf am-navbar-default ">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4">
+            <li>
+                <a href="#" class="">
+                    <i class="am-icon am-icon-home"></i>
+                    <span class="am-navbar-label" style="color: #1a1a1a">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Category" class="">
+                    <i class="am-icon am-icon-university"></i>
+                    <span class="am-navbar-label">全部课程</span>
+                </a>
+            </li>
+            <li>
+                <a href="/User" class="">
+                    <i class="am-icon am-icon-user"></i>
+                    <span class="am-navbar-label">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/js/amazeui.min.js"></script>
+<script>
+    $('#my_silder').flexslider({
+        slideshow: true,
+        slideshowSpeed: 4000,
+        useCSS: true,
+        touch: true,
+        animationLoop: true
+
+    });
+</script>

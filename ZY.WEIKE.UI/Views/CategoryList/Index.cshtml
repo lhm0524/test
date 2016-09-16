@@ -1,0 +1,146 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>类别</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="icon" type="image/png" href="/Content/assets/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/Content/assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/assets/css/Common.css" />
+    <style>
+        .am-avg-sm-3 .weike-active {
+            border-color: #40A7BD;
+            color: #40A7BD;
+        }
+
+        .am-avg-sm-3 a:visited {
+            color: #444;
+        }
+
+        .am-avg-sm-3 a:active {
+            color: #444;
+        }
+
+        .am-avg-sm-3 a {
+            margin: 0 auto;
+            color: #444;
+        }
+
+        .middle {
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        .am-avg-sm-3 li {
+            margin-bottom: 5px;
+            text-align: center;
+            color: red;
+            padding: 2px;
+        }
+
+            .am-avg-sm-3 li div {
+                color: #777777;
+                border: 1px solid;
+            }
+    </style>
+</head>
+<body>
+        <header data-am-widget="header" class="am-header am-header-default" style="margin-bottom: 1px;">
+            <div class="am-header-left am-header-nav">
+                <a href="#" id="backReferrer" class="">
+                    <i class="am-header-icon am-icon-chevron-left"></i>
+                </a>
+            </div>
+            <div id="am-title" class="am-header-title">
+                -类别-
+            </div>
+        </header>
+
+        <div class="am-panel-bd">
+            <ul id="list" class="am-avg-sm-3">
+                <li>
+                    <div data-typeid="0">全部</div>
+                </li>
+                @foreach (ZY.WEIKE.MODAL.DepartmentModel item in (IEnumerable<ZY.WEIKE.MODAL.DepartmentModel>)ViewData["cl_department"])
+                {   
+                <li>
+                    <div data-typeid="@item.Id">@item.Name</div>
+                </li>
+                }
+                <li>
+                    <div data-typeid="-1">其他</div>
+                </li>
+            </ul>
+        </div>
+
+        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+            <div class="am-list-news-hd am-cf">
+                <a href="#" class="">
+                    <h2 id="h2_falg">全部</h2>
+                </a>
+            </div>
+
+            <div class="am-list-news-bd">
+                <ul id="list_Course" class="am-list">
+                </ul>
+            </div>
+
+        </div>
+        <div style="width:100%;text-align:center">
+            <a style="margin:0 auto" id="load_more" href="javascript:;">加载更多...</a>
+        </div>
+    <script src="/Content/assets/js/jquery.min.js"></script>
+    <script src="/Content/assets/js/amazeui.min.js"></script>
+    <script src="/Content/assets/js/Function.js"></script>
+    <script src="/Content/assets/js/CategoryList.js"></script>
+</body>
+</html>
+<script>
+    BindClickEvent();
+
+    for (var i = 0; i < courseList.length; i++) {
+        courseList[0].addEventListener('click', function () {
+            window.location = 'Play';
+        });
+    }
+
+    document.getElementById('backReferrer').addEventListener('click', function () {
+        history.go(-1);
+    });
+
+    Activity();
+    LoadingEntities();
+    
+
+</script>

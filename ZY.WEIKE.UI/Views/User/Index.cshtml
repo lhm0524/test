@@ -1,0 +1,149 @@
+﻿@{
+    Layout = null;
+}
+@using ZY.WEIKE.MODAL;
+@model UsersModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>账号</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="icon" type="image/png" href="~/Content/assets/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="~/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="~/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="~/Content/assets/i/app-icon72x72@2x.png" />
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="~/Content/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/Common.css" />
+    <style>
+        .am-panel div img {
+            border-radius: 50%;
+        }
+
+        #tocenter span {
+            margin-left: 5px;
+        }
+
+        #tocenter i {
+            float: right;
+            line-height: 64px;
+        }
+    </style>
+
+</head>
+<body>
+    <header data-am-widget="header" class="am-header am-header-default" style="margin-bottom: 1px;">
+        <div class="am-header-left am-header-nav">
+            <a href="#" class="">
+                <i class="am-header-icon am-icon-home"></i>
+                <a>我的</a>
+            </a>
+        </div>
+    </header>
+
+    <section class="am-panel am-panel-default">
+        <div id="tocenter" class="am-panel-bd" style="background-color:#ddd">
+            <img width="64px" src="~/Users/@Model.UserImagePath" />
+            <span>@Model.UserName</span>
+            <i class="am-icon am-icon-chevron-right"></i>
+        </div>
+    </section>
+
+    <div class="am-panel-group" id="accordion">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd">
+                <h4 class="am-panel-title" data-am-collapse="{target: '#do-not-say-1'}">
+                    正在学习
+                    <i class="am-icon am-icon-angle-double-down am-align-right"></i>
+                </h4>
+            </div>
+            <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
+                <div class="am-panel-bd">
+                    <ul id="studyingcourse" class="am-avg-sm-1">
+                        <li>ddddd</li>
+                        <li>ddddd</li>
+                        <li>ddddd</li>
+                        <li>ddddd</li>
+                        <li>ddddd</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd">
+                <h4 class="am-panel-title" data-am-collapse="{target: '#do-not-say-2'}">
+                    已学完
+                    <i class="am-icon am-icon-angle-double-down am-align-right"></i>
+                </h4>
+            </div>
+            <div id="do-not-say-2" class="am-panel-collapse am-collapse">
+                <div class="am-panel-bd">
+                    课程
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="navigationbar" data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
+         id="">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4">
+            <li>
+                <a href="/Home" class="">
+                    <i class="am-icon am-icon-home"></i>
+                    <span class="am-navbar-label">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Category" class="">
+                    <i class="am-icon am-icon-university"></i>
+                    <span class="am-navbar-label">全部课程</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="">
+                    <i class="am-icon am-icon-user"></i>
+                    <span class="am-navbar-label" style="color: #1a1a1a">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+        <a href="#top" title="">
+            <i class="am-gotop-icon am-icon-hand-o-up"></i>
+        </a>
+    </div>
+</body>
+</html>
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/js/amazeui.min.js"></script>
+<script>
+    document.getElementById('tocenter').addEventListener('click', function () {
+        window.location.href = '/User/PersonCenter';
+    });
+</script>

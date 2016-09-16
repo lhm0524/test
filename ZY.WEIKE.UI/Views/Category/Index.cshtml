@@ -1,0 +1,151 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>课程分类</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="icon" type="image/png" href="/Content/assets/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/Content/assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/assets/css/Common.css" />
+    <style>
+        .am-avg-sm-3 a:visited {
+            color: #444;
+        }
+
+        .am-avg-sm-3 a:active {
+            color: #444;
+        }
+
+        .am-avg-sm-3 a {
+            color: #444;
+        }
+        .am-avg-sm-3 li{
+            text-align:center;
+        }
+        .am-panel {
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header data-am-widget="header" class="am-header am-header-default" style="margin-bottom: 1px;">
+        <div class="am-header-left am-header-nav">
+            <a href="#left-link" class="">
+                <i class="am-header-icon am-icon-home"></i>
+                <a>微课</a>
+            </a>
+        </div>
+        <div class="am-header-right am-header-nav">
+            <a href="#right-link" class="">
+                <i class="am-header-icon am-icon-search"></i>
+            </a>
+        </div>
+    </header>
+    @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["initdata"])
+    {
+        
+    <section data-id="@item.Id" id="colleage_@item.Id" class="am-panel am-panel-default">
+        <header class="am-panel-hd">
+            @item.Name
+        </header>
+        <div class="am-panel-bd">
+            <ul class="am-avg-sm-3">
+                @*<li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList?colleageid=item.Id&departmentid=">ggg</a></li>
+                <li><a href="CategoryList.aspx">其他</a></li>*@
+            </ul>
+        </div>
+    </section>
+
+    }
+
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default"
+         id="navigationbar">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4">
+            <li>
+                <a href='/Home' class="">
+                    <i class='am-icon am-icon-home'></i>
+                    <span class='am-navbar-label'>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="">
+                    <i class="am-icon am-icon-university"></i>
+                    <span class="am-navbar-label" style="color: #1a1a1a">全部课程</span>
+                </a>
+            </li>
+            <li>
+                <a href="/User" class="">
+                    <i class="am-icon am-icon-user"></i>
+                    <span class="am-navbar-label">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+        <a href="#top" title="">
+            <i class="am-gotop-icon am-icon-hand-o-up"></i>
+        </a>
+    </div>
+    <script src="/Content/assets/js/jquery.min.js"></script>
+    <script src="/Content/assets/js/amazeui.min.js"></script>
+    <script src="/Content/assets/js/Category.js"></script>
+    <script>
+        function LoadHammer() {
+            var Hammer = $.AMUI.Hammer;
+            var bodyHammer = new Hammer(document.getElementById('bd-main'));
+            bodyHammer.on('swipe', function (e) {
+                if (e.direction == 2) {
+                    //console.log('向左滑动');
+                    window.location.href = 'Index.html'
+                }
+                if (e.direction == 4) {
+                    //console.info('向右滑动');
+                    window.location.href = 'People.html';
+                }
+            });
+        }
+        LoadDepartment();
+        //BindEvent();
+        
+        //LoadHammer();
+    </script>
+</body>
+</html>

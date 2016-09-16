@@ -1,0 +1,238 @@
+﻿@model ZY.WEIKE.MODAL.UsersModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Set render engine for 360 browser -->
+    <title>个人中心</title>
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="icon" type="image/png" href="~/Content/assets/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="~/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="~/Content/assets/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="~/Content/assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="~/Content/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/Common.css" />
+    <!-- Amaze UI CSS -->
+    <style>
+        body {
+            background-color: #FFFFFF;
+        }
+
+        .am-panel div img {
+            border-radius: 50%;
+            border: 3px solid #0e90d2;
+            width: 75px;
+        }
+
+        #header div div {
+            text-align: center;
+        }
+
+        .am-panel-collapse {
+            padding: 0.5rem;
+        }
+
+            .am-panel-collapse input {
+                margin: 0 auto;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+                .am-panel-collapse input[type=button] {
+                    margin-right: 0;
+                }
+
+        hr {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .am-panel-bd .am-form-file div {
+            margin-right: 0;
+            text-align: left;
+        }
+
+        #previewimage {
+            width: 120px;
+            height: 120px;
+        }
+
+        #my-modal {
+            padding: 1rem;
+        }
+
+        table {
+            border: none;
+        }
+
+        #userinfo .am-panel-bd div > * {
+            pointer-events: none;
+        }
+        #img_userimg #SWFUpload_0 {
+            display:none;
+        }
+        #img_userimg #img_userimg-button {
+            background-repeat:round;
+        }
+    </style>
+</head>
+<body>
+    @*账户信息展开的时候，右边的箭头往下。收起的时候，右边的箭头向右*@
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="~/User/Index" class="">
+                <i class="am-header-icon am-icon-chevron-left"></i>
+            </a>
+        </div>
+        <div class="am-header-title">
+            个人中心
+        </div>
+    </header>
+    <div id="header" class="am-panel am-panel-default">
+        <div class="am-panel-bd">
+            <img class="am-center" id="img_userimg" src="~/Users/@Model.UserImagePath" />
+            <div>Hi，@Model.UserName</div>
+            <div><small>@Model.Email</small></div>
+        </div>
+
+    </div>
+
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd" data-am-collapse="{target: '#userinfo'}">
+            账户信息
+            <i class="am-icon am-icon-angle-left" style="float: right"></i>
+        </div>
+        <div id="userinfo" class="am-panel-collapse am-collapse am-in">
+            <div class="am-panel-bd">
+                <span>上次登录时间：@Model.LastLoginTime.ToString("yyyy-MM-dd")</span>
+                <hr/>
+                <span>您已注册了<a>@((DateTime.Now - Model.RegeistTime).Days)</a>天</span>
+                <hr />
+                <div id="sexbar">性别：<span style="float: right">@Model.Sex</span></div>
+                <hr />
+                <div id="email">邮箱：<span style="float: right">@Model.Email</span></div>
+                <hr />
+                <div id="username">用户名：<span style="float: right">@Model.UserName</span></div>
+                <hr />
+                <div id="birthday">出生日期：<span style="float: right">@Model.Birthday.ToString("yyyy-MM-dd")</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd" data-am-collapse="{target: '#editpwd'}">修改密码<i class="am-icon am-icon-angle-down" style="float: right"></i></div>
+        <div id="editpwd" class="am-panel-collapse am-collapse">
+            <div class="am-form">
+                <input type="password" placeholder="请输入原密码" name="oldpwd" id="oldpwd" />
+                <input type="password" placeholder="请输入新密码" name="newpwd" id="newpwd" />
+                <input type="password" placeholder="请再次输入新密码" name="newpwdx" id="newpwdx" />
+            </div>
+        </div>
+    </div>
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd" data-am-collapse="{target: '#editaw'}">安全选项<i class="am-icon am-icon-angle-down" style="float: right"></i></div>
+        <div id="editaw" class="am-panel-collapse am-collapse">
+            <div class="am-form">
+                <input type="text" placeholder="请输入密保答案" value="@Model.Answer" name="anwser" id="anwser" />
+            </div>
+        </div>
+    </div>
+    <button id="btn_saveentity" class="am-btn am-btn-block am-btn-primary">保存</button>
+    <button id="btn_logout" class="am-btn am-btn-block">注销</button>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="sex-modal">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd" style="text-align: left">性别</div>
+            <div class="am-modal-bd">
+                <table style="width: 100%">
+                    <tr id="tr_man">
+                        <td align="left">
+                            <label>男</label>
+                        </td>
+                        <td align="right">
+                            <input type="radio" name="sex" id="man" value="1"/>
+                        </td>
+                    </tr>
+                </table>
+                <hr />
+                <table style="width: 100%">
+                    <tr id="tr_woman">
+                        <td align="left">
+                            <label>女</label>
+                        </td>
+                        <td align="right">
+                            <input type="radio" name="sex" id="woman" value="0"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="editmodal">
+        <div class="am-modal-dialog">
+            <div id="edittitle" class="am-modal-hd">Amaze UI</div>
+            <div class="am-modal-bd">
+
+                <input id="edittext" type="text" class="am-modal-prompt-input" />
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm id="btn_ensure">确定</span>
+            </div>
+        </div>
+    </div>
+    <input id="file_upload" name="file_upload" type="file" multiple="true" style="display : none" />
+</body>
+</html>
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/js/amazeui.min.js"></script>
+<script src="~/Content/assets/js/Function.js"></script>
+<script src="~/Content/assets/js/PersonCenter.js"></script>
+<script src="~/Content/js/jquery.uploadify.min.js"></script>
+<script>
+    BindEvent();
+
+
+    function UploadSuccess(imgurl) {
+        document.getElementById('previewimage').setAttribute('src', imgurl);
+        document.getElementById('previewimage').setAttribute('style', 'display:block');
+    }
+
+    $('.am-panel .am-panel-collapse').on('open.collapse.amui', function (e) {
+        e.currentTarget.parentNode.children[0].children[0].className = 'am-icon am-icon-angle-left';
+    }).on('close.collapse.amui', function (e) {
+        //e.currentTarget.parentNode.children[0].children[0]
+        e.currentTarget.parentNode.children[0].children[0].className = 'am-icon am-icon-angle-down';
+    });
+</script>

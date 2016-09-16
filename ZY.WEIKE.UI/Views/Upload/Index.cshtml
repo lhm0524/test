@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        object {
+            display: none;
+        }
+
+        ul {
+            color: #0094ff;
+        }
+        .test::after {
+            content:attr(data-tooltip)
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" enctype="multipart/form-data">
+        <input id="files" name="files" type="file" multiple="true">
+    </form>
+    <img id="back" />
+    <button id="d" class="test" data-tooltip="ffffff">ddddd</button>
+    <ul id="ul"></ul>
+
+</body>
+</html>
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script type="text/javascript">
+    var i = 0;
+    document.getElementById('d').addEventListener('click', function (e) {
+        var ul = document.getElementById('ul');
+        var li = document.createElement('li');
+        li.innerText = i++;
+        if (document.querySelectorAll('ul li').length == 0) {
+            ul.appendChild(li);
+        }
+        var topnode = document.querySelectorAll('ul li')[0];
+
+        ul.insertBefore(li, topnode);
+    });
+</script>
