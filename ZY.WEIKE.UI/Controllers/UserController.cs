@@ -49,6 +49,10 @@ namespace ZY.WEIKE.UI.Controllers
 
         public ActionResult Login()
         {
+            if (Session["Id"] != null && Session["role"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             return View();
         }
 

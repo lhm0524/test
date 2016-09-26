@@ -83,6 +83,10 @@ namespace ZY.WEIKE.MSSQLDAL
             }
             using (SqlDataReader reader = SqlHelper.RunSql(sql, ps))
             {
+                if (!reader.HasRows)
+                {
+                    return list;
+                }
                 while (reader.Read())
                 {
                     MODAL.WordsModel m = new MODAL.WordsModel();

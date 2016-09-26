@@ -106,6 +106,7 @@
         <input id="replyarea" type="text" name="name" value="" placeholder="说些什么吧..." class="txtPinglun" />
         <input id="btn_fabu" type="button" name="name" value="发布" class="btnAnniu" />
     </div>
+    <button class="am-btn am-btn-block am-btn-success" id="print">amuilocalstorage</button>
 </body>
 </html>
 <script src="~/Content/assets/js/jquery.min.js"></script>
@@ -113,8 +114,16 @@
 <script src="~/Content/assets/js/Function.js"></script>
 <script src="~/Content/assets/js/Play.js"></script>
 <script>
-    BindClickEvent();
-    document.getElementById("v_Course").volume = 0.1;
-
-    LoadCommit();
+    window.onload = function () {
+        BindClickEvent();
+        LoadCommit();
+        MideaSetting();
+        
+        //console.info(VideoEntity);
+        VideoEntity = MylocalStroge.GetObjcetItem(urlid, VideoEntity);
+        //console.info(VideoEntity.volume);
+        video.volume = parseFloat(VideoEntity.volume);
+        video.currentTime = parseFloat(VideoEntity.currentTime);
+       //等文档加载完成后再设置视频长度 否则会出现视频卡顿问题
+    };
 </script>

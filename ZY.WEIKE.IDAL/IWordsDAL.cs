@@ -8,5 +8,6 @@ namespace ZY.WEIKE.IDAL
 {
     public interface IWordsDAL : IDAL.IBaseDAL<MODAL.WordsModel>
     {
+        
     }
 }

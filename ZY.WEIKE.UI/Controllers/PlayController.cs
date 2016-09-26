@@ -10,11 +10,11 @@ namespace ZY.WEIKE.UI.Controllers
     {
         //
         // GET: /Play/
-        private BLL.WeiKeBLL weikebll;
-        private BLL.ResourceBLL resbll;
-        private BLL.WordsBLL worbll;
-        private BLL.UsersBLL userbll;
-        [OutputCache(Duration = 1 * 60 * 60)]
+        private BLL.WeiKeBLL weikebll { get; set; }
+        private BLL.ResourceBLL resbll { get; set; }
+        private BLL.WordsBLL worbll { get; set; }
+        private BLL.UsersBLL userbll { get; set; }
+        //[OutputCache(Duration = 1 * 60 * 60)]
         public ActionResult Index(int id)
         {
             weikebll = new BLL.WeiKeBLL();

@@ -50,6 +50,7 @@
     <Compile Include="SqlHelper.cs" />
     <Compile Include="UsersDAL.cs" />
     <Compile Include="WeiKeDAL.cs" />
+    <Compile Include="WK_UserLogDAL.cs" />
     <Compile Include="WordsDAL.cs" />
   </ItemGroup>
   <ItemGroup>

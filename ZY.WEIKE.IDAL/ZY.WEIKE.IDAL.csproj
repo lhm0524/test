@@ -45,6 +45,7 @@
     <Compile Include="IResourceDAL.cs" />
     <Compile Include="IUserDAL.cs" />
     <Compile Include="IWeiKeDAL.cs" />
+    <Compile Include="IWK_UserLogDAL.cs" />
     <Compile Include="IWordsDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

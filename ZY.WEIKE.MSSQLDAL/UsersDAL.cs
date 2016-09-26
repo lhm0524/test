@@ -117,6 +117,7 @@ namespace ZY.WEIKE.MSSQLDAL
 
 
                 cmd.ExecuteScalar();
+                cmd.Dispose();
                 role = output_role.Value;
                 return (int)result_id.Value;
             }

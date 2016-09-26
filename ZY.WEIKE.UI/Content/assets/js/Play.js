@@ -1,10 +1,17 @@
 ﻿/// <reference path="jquery.min.js" />
+/// <reference path="amazeui.min.js" />
 var urlid = location.href.substring(location.href.lastIndexOf('/') + 1);
 var commitview = document.getElementById('commitview');
 var pageindex = 1;
+var video = document.getElementById("v_Course");
+VideoEntity = new Object();
+
 function BindClickEvent() {
     document.getElementById('btn_fabu').addEventListener('click', CreateComment);
     document.getElementById('loadmorelink').addEventListener('click', LoadMore);
+    VideoEntity.Id = urlid.toString();
+    VideoEntity.currentTime = 0;
+    VideoEntity.volume = 0.2;
 }
 
 function CreateComment(e) {
@@ -18,7 +25,8 @@ function CreateComment(e) {
     data.WeiKeId = urlid;
     $.post('/Comment/Create', data, function (result) {
         if (result.state == true) {
-            alert('发表成功');
+            alert('发表成功!');
+            LoadMore(e);
             document.getElementById('replyarea').value = '';
         } else if (result.state == 'empty') {
             alert('内容为空');
@@ -132,3 +140,75 @@ function AppendCommint(result) {
         }
     }
 }//添加评论集合
+
+function MideaSetting() {
+    video.addEventListener('progress', function () {
+
+    });//视频下载中事件
+    video.addEventListener('canplaythrough', function () {
+        BindVideoElemtEvent();
+    });//视频能够流畅的播放事件
+}//视频设置
+
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}//根据键名得到值
+
+function BindVideoElemtEvent() {
+    video.addEventListener('timeupdate', function (e) {
+        var t = parseFloat(video.currentTime)
+        VideoEntity.currentTime = t;
+        MylocalStroge.SetItem(urlid, VideoEntity);
+    });//播放进度发生改变
+
+    video.addEventListener('volumechange', function () {
+        var vv = parseFloat(video.volume);
+        VideoEntity.volume = vv;
+        MylocalStroge.SetItem(urlid, VideoEntity);
+    });//音量发生改变
+
+} //绑定video对象的事件
+
+var MylocalStroge = {
+    SetItem : function (key, data) {
+        var str = JSON.stringify(data);
+        localStorage.setItem(key, str);
+    },
+    GetStringItem : function (key, defaultResult) {
+        var res = localStorage.getItem(key);
+        if (res == null) {
+            return defaultResult;
+        }
+        return res;
+    },
+    GetObjcetItem : function (key, defaultResult) {
+        var res = localStorage.getItem(key);
+        if (res == null) {
+            return defaultResult;
+        }
+        return JSON.parse(res);
+    },
+    RemoveItem : function (key) {
+        localStorage.removeItem(key);
+    },
+    Clear : function () {
+        localStorage.clear();
+    }
+}//本地数据操作
+var VideoEntity = {
+    Id : urlid,
+    currentTime : 0.0,
+    volume: 0.1
+}
+
+function Load() {
+
+}
+
+document.getElementById('print').addEventListener('click', function () {
+    console.info(VideoEntity);
+});

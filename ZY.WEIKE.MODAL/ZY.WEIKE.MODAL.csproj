@@ -45,6 +45,7 @@
     <Compile Include="ResourceModel.cs" />
     <Compile Include="UsersModel.cs" />
     <Compile Include="WeiKeModel.cs" />
+    <Compile Include="WK_UserLogModel.cs" />
     <Compile Include="WordsModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

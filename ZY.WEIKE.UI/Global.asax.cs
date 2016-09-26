@@ -23,5 +23,16 @@ namespace ZY.WEIKE.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadLogHandler()
+        {
+            System.Threading.ThreadPool.QueueUserWorkItem(o =>
+            {
+                System.Threading.Thread.CurrentThread.Name = "操作日志的线程";
+            });
+        }
     }
 }
