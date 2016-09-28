@@ -35,12 +35,14 @@ namespace ZY.WEIKE.UI
             routes.MapRoute(
                 name: "Default7",
                 url: "{controller}/{action}/{id}/{name}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, name = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, name = UrlParameter.Optional },
+                namespaces: new string[] { "ZY.WEIKE.UI.Controllers" }
             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{*id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "ZY.WEIKE.UI.Controllers" }
             );
         }
     }

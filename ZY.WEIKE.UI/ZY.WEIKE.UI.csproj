@@ -126,6 +126,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\HomeController.cs" />
+    <Compile Include="Areas\TeacherArea\TeacherAreaAreaRegistration.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CategoryListController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -238,6 +241,10 @@
     <Content Include="Content\assets\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\assets\fonts\FontAwesome.otf" />
+    <Content Include="Areas\AdminArea\Views\Web.config" />
+    <Content Include="Areas\AdminArea\Views\Shared\_Layout1.cshtml" />
+    <Content Include="Areas\TeacherArea\Views\Web.config" />
+    <Content Include="Areas\AdminArea\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\File.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Global.asax" />
@@ -270,7 +277,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\CategoryList\Index.cshtml" />
     <Content Include="Views\Play\Index.cshtml" />
@@ -278,9 +284,15 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\PersonCenter.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\TeacherArea\Controllers\" />
+    <Folder Include="Areas\TeacherArea\Models\" />
+    <Folder Include="Areas\TeacherArea\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="TempFiles\" />
   </ItemGroup>
