@@ -11,5 +11,6 @@ namespace ZY.WEIKE.IDAL
         int Login(int logintype, string name, string pwd, out object role);
         MODAL.UsersModel GetImageAndName(int primaryKey);
         int IsExists(MODAL.UsersModel usermodel);
+        int EditImage(int primarykey, string imagepath);
     }
 }

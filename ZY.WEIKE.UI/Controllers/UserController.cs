@@ -68,6 +68,51 @@ namespace ZY.WEIKE.UI.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [Filter.StudentFilter]
+        public ActionResult Image()
+        {
+            UserBll = new BLL.UsersBLL();
+            MODAL.UsersModel m = UserBll.LoadImageAndName((int)Session["Id"]);
+            object imagepath = m.UserImagePath == null ? "default-personal.png" : m.UserImagePath;
+            ViewBag.ImagePath = "/Users/UserImg/" + imagepath.ToString();
+            return View();
+        }
+
+        [Filter.StudentFilter]
+        [HttpPost]
+        public ActionResult Image(double Id)
+        {
+            HttpPostedFileBase file = Request.Files["imagepath"];
+            string path = Server.MapPath("~/TempFiles/");
+            string extension = System.IO.Path.GetExtension(file.FileName);
+            string newname = Guid.NewGuid().ToString() + DateTime.Now.ToString("hh-mm-ss") + extension;
+            file.SaveAs(path + newname);
+            ViewBag.ImagePath = "/TempFiles/" + newname;
+            return View();
+        }
+
+        [Filter.StudentFilter]
+        public ActionResult EditImage(string imagename)
+        {
+            UserBll = new BLL.UsersBLL();
+
+            int index = imagename.Trim().LastIndexOf('/');
+            string name = imagename.Trim().Substring(index);
+
+            string sourceFileName = Server.MapPath(imagename.Trim());
+            string destFileName = Server.MapPath("~/Users/UserImg/");
+            System.IO.File.Move(sourceFileName, destFileName + name);
+
+            if (UserBll.EditUserImage((int)Session["Id"], name))
+            {
+                return Json(new { state = "true", msg = "修改成功！" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { state = "false", msg = "未知原因！" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         public ActionResult GetUserImg(int Id)
         {
             UserBll = new BLL.UsersBLL();
@@ -118,8 +163,15 @@ namespace ZY.WEIKE.UI.Controllers
         [HttpPost]
         public ActionResult Register(MODAL.UsersModel user)
         {
-
-            return Json(user);
+            if (UserBll.IsExist(user))
+            {
+                return Json(new { state = false, msg = "用户名或邮箱已存在！"  });
+            }
+            if (UserBll.CreateEntity(user))
+            {
+                return Json(new { state = true, msg = "注册成功！" });
+            }
+            return Json(new { state = false, msg = "未知错误！" });
         }
     }
 }

@@ -18,7 +18,17 @@ namespace ZY.WEIKE.MSSQLDAL
 
         public int CreateEntity(MODAL.UsersModel t)
         {
-            throw new NotImplementedException();
+            SqlParameter[] ps = new SqlParameter[] 
+            { 
+                new SqlParameter() { ParameterName = "@username", Value = t.UserName, SqlDbType = SqlDbType.NVarChar, Size = 16 },
+                new SqlParameter() { ParameterName = "@pwd", Value = t.UserPwd, DbType = DbType.String },
+                new SqlParameter() { ParameterName = "@answer", Value = t.Answer, DbType = DbType.String },
+                new SqlParameter() { ParameterName = "@email", Value = t.Email, DbType = DbType.String },
+                new SqlParameter() { ParameterName = "@time", Value = DateTime.Now, DbType = DbType.DateTime }
+            };
+            string sql = "insert into Users (UserName,UserPwd,Answer,Email,RegeistTime) values(@username,@pwd,@answer,@email, @time)";
+            int insertcount = SqlHelper.ExecuteNonQuery(sql, CommandType.Text, ps);
+            return insertcount;
         }
 
         public int EditEntity(MODAL.UsersModel t)
@@ -41,7 +51,6 @@ namespace ZY.WEIKE.MSSQLDAL
 
             return result;
         }
-
 
         public IEnumerable<MODAL.UsersModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
@@ -123,7 +132,6 @@ namespace ZY.WEIKE.MSSQLDAL
             }
         }
 
-
         public MODAL.UsersModel GetImageAndName(int primaryKey)
         {
             MODAL.UsersModel u = new MODAL.UsersModel();
@@ -147,6 +155,18 @@ namespace ZY.WEIKE.MSSQLDAL
             };
             int result = (int)SqlHelper.ExecuteScalar(sql, CommandType.Text, ps);
             return result;
+        }
+
+        public int EditImage(int primarykey, string imagepath)
+        {
+            string sql = "update users set userimagepath=@path where Id=@id";
+            SqlParameter[] ps = new SqlParameter[]
+            {
+                new SqlParameter() { ParameterName = "@path", Value = imagepath, DbType = DbType.String },
+                new SqlParameter() { ParameterName = "@id", DbType = DbType.Int32, Value = primarykey }
+            };
+            int count = SqlHelper.ExecuteNonQuery(sql, CommandType.Text, ps);
+            return count;
         }
     }
 }

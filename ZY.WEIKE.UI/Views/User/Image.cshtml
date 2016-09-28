@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "头像";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@section head {
+    <style>
+        #imgcontainer
+        {
+            max-width: 400px;
+            background-color: #808080;
+            padding-top: 25%;
+            padding-bottom: 25%;
+        }
+        #imgcontainer img
+        {
+            max-width: 280px;
+        }
+    </style>
+}
+<header data-am-widget="header" class="am-header am-header-default" style="margin-bottom: 1px;">
+    <div class="am-header-left am-header-nav">
+        <a href="" class="">
+            <i class="am-header-icon am-icon-chevron-circle-left"></i>
+            <a>头像</a>
+        </a>
+    </div>
+    <div class="am-header-right am-header-nav">
+        <div id="doc-dropdown-justify-js">
+            <div class="am-dropdown" id="doc-dropdown-js">
+                <button class="am-btn am-btn-primary am-dropdown-toggle">&equiv;</button>
+                    <ul class="am-dropdown-content" style="">
+                        <li><a id="saveImage">保存</a></li>
+                        <li><a>返回</a></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</header>
+@*&equiv;*@
+<div id="imgcontainer">
+    <img id="uploadfile" class="am-center" src="@ViewBag.ImagePath" />
+</div>
+<input type="hidden" name="imgname" id="imgname" value="@ViewBag.ImagePath" />
+<form id="form1" action="~/User/Image/2" enctype="multipart/form-data" method="post">
+    <input onchange="filechanged()" style="display:none" type="file" accept="(.jepg|.jpg|.bmp|.gif)" name="imagepath" value="" />
+</form>
+    @section footscript {
+        <script>
+            window.onload = function () {
+                $('#uploadfile').on('click', function () {
+                    $('[type=file]').click();
+                });
+                $('#doc-dropdown-js').dropdown({ justify: '#doc-dropdown-justify-js' });
+                $('#saveImage').on('click', function () {
+                    var data = {};
+                    data.imagename = document.getElementById('imgname').value;
+                    $.get('/user/EditImage/', data, function (jsonresult) {
+                        if (jsonresult.state) {
+                            window.location = '/User/PersonCenter';
+                        }
+                        else {
+                            alert(jsonresult.msg);
+                        }
+                    });
+                });
+            };
+            function filechanged() {
+                $('#form1').submit();
+            }
+        </script>
+    }

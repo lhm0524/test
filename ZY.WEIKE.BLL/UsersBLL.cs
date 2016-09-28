@@ -8,7 +8,7 @@ namespace ZY.WEIKE.BLL
 {
     public class UsersBLL
     {
-        private IDAL.IUserDAL dal;
+        private IDAL.IUserDAL dal { get; set; }
         public UsersBLL()
         {
             dal = DALFACTORY.AbstractFactory.CreateUserDALInstance();
@@ -45,6 +45,16 @@ namespace ZY.WEIKE.BLL
         public bool IsExist(MODAL.UsersModel userModel)
         {
             return dal.IsExists(userModel) > 1;
+        }
+
+        public bool CreateEntity(MODAL.UsersModel user)
+        {
+            return dal.CreateEntity(user) > 0;
+        }
+
+        public bool EditUserImage(int primarykey, string imagename)
+        {
+            return dal.EditImage(primarykey, imagename) > 0;
         }
     }
 }

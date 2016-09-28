@@ -235,4 +235,9 @@
         //e.currentTarget.parentNode.children[0].children[0]
         e.currentTarget.parentNode.children[0].children[0].className = 'am-icon am-icon-angle-down';
     });
+    window.onload = function () {
+        $('#img_userimg').on('click', function () {
+            window.location = '/User/Image/'
+        });
+    }
 </script>
