@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图片</title>
+    <style>
+        img 
+        {
+            max-width: 400px;
+        }
+        body
+        {
+            padding: 0;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="~/demotest/picture.jpg" />
+    </div>
+    <!-- Scripts -->
+</body>
+</html>
+<script src="~/demotest/js/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $('.container img').cropper();
+    }
+</script>
+

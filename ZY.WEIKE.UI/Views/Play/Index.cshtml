@@ -65,6 +65,10 @@
         #commitview .am-comment-main {
             margin-right: 0px;
         }
+        .am-padding-lg
+        {
+            padding-left:0px;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +86,16 @@
         <source src="/Users/@(((ResourceModel)ViewData["res"]).VideoPath)" type="video/mp4" />
         Your browser does not support the video tag.
     </video>
+    <form data-am-rating method="get">
+        <input type="hidden" name="score">
+        <a class="am-padding-lg" data-am-icons="star-o,star" data-am-score="2" role="button">
+            <i class="am-icon-star"></i>
+            <i class="am-icon-star"></i>
+            <i class="am-icon-star-o"></i>
+            <i class="am-icon-star-o"></i>
+            <i class="am-icon-star-o"></i>
+        </a>
+    </form>
     <div class="am-tabs" data-am-tabs="{noSwipe: 1}">
         <ul class="am-tabs-nav am-nav am-nav-tabs">
             <li class="am-active"><a href="#CousrseImfomation">视频介绍</a></li>
@@ -111,6 +125,7 @@
 </html>
 <script src="~/Content/assets/js/jquery.min.js"></script>
 <script src="~/Content/assets/js/amazeui.min.js"></script>
+<script src="~/Scripts/amazeui.rating.js"></script>
 <script src="~/Content/assets/js/Function.js"></script>
 <script src="~/Content/assets/js/Play.js"></script>
 <script>
@@ -126,4 +141,9 @@
         video.currentTime = parseFloat(VideoEntity.currentTime);
        //等文档加载完成后再设置视频长度 否则会出现视频卡顿问题
     };
+    function Rating(jsondata) {
+        $.post('/user/ss', jsondata, function (res) {
+
+        });
+    }
 </script>

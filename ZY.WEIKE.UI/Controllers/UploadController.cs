@@ -24,6 +24,9 @@ namespace ZY.WEIKE.UI.Controllers
             file.SaveAs(path + file.FileName);
             return Content("/TempFiles/" + file.FileName);
         }
-
+        public ActionResult CropperDemo()
+        {
+            return View();
+        }
     }
 }
