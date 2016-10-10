@@ -8,6 +8,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/assets/css/amazeui.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Toast.css" rel="stylesheet" />
     <style>
         object {
             display: none;
@@ -28,21 +30,30 @@
     <img id="back" />
     <button id="d" class="test" data-tooltip="ffffff">ddddd</button>
     <ul id="ul"></ul>
-
+    <div id="toast" data-role-toast>
+        <span>您已经评价过了</span>
+    </div>
 </body>
 </html>
 <script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/js/Toast.js"></script>
 <script type="text/javascript">
-    var i = 0;
-    document.getElementById('d').addEventListener('click', function (e) {
-        var ul = document.getElementById('ul');
-        var li = document.createElement('li');
-        li.innerText = i++;
-        if (document.querySelectorAll('ul li').length == 0) {
-            ul.appendChild(li);
-        }
-        var topnode = document.querySelectorAll('ul li')[0];
+    window.onload = function () {
+        var i = 0;
+        document.getElementById('d').addEventListener('click', function (e) {
+            //var ul = document.getElementById('ul');
+            //var li = document.createElement('li');
+            //li.innerText = i++;
+            //if (document.querySelectorAll('ul li').length == 0) {
+            //    ul.appendChild(li);
+            //}
+            //var topnode = document.querySelectorAll('ul li')[0];
+            //ul.insertBefore(li, topnode);
 
-        ul.insertBefore(li, topnode);
-    });
+            $('#toast').Toast({duration : 5000});
+        });
+    }
+
+    
+    
 </script>

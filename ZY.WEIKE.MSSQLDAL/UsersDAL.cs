@@ -168,5 +168,11 @@ namespace ZY.WEIKE.MSSQLDAL
             int count = SqlHelper.ExecuteNonQuery(sql, CommandType.Text, ps);
             return count;
         }
+
+
+        public MODAL.UsersModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

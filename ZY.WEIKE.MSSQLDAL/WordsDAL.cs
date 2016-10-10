@@ -101,5 +101,11 @@ namespace ZY.WEIKE.MSSQLDAL
 
             return list;
         }
+
+
+        public MODAL.WordsModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

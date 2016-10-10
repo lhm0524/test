@@ -1,0 +1,14 @@
+﻿[data-role-toast] {
+    position: absolute;
+    bottom: -1000%;
+    background-color: #808080;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 50px;
+    color: white;
+    height:auto;
+    font-size: 1.3rem;
+    display:none;
+}

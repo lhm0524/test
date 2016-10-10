@@ -55,5 +55,11 @@ namespace ZY.WEIKE.MSSQLDAL
         {
             throw new NotImplementedException();
         }
+
+
+        public MODAL.WK_UserLogModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

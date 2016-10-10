@@ -62,5 +62,11 @@ namespace ZY.WEIKE.MSSQLDAL
         {
             throw new NotImplementedException();
         }
+
+
+        public MODAL.ResourceModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

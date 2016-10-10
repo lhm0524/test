@@ -156,5 +156,11 @@ namespace ZY.WEIKE.MSSQLDAL
             reader.Dispose();
             return list;
         }
+
+
+        public MODAL.WeiKeModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

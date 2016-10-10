@@ -68,6 +68,7 @@
         .am-padding-lg
         {
             padding-left:0px;
+            padding-right:0px;
         }
     </style>
 </head>
@@ -86,20 +87,11 @@
         <source src="/Users/@(((ResourceModel)ViewData["res"]).VideoPath)" type="video/mp4" />
         Your browser does not support the video tag.
     </video>
-    <form data-am-rating method="get">
-        <input type="hidden" name="score">
-        <a class="am-padding-lg" data-am-icons="star-o,star" data-am-score="2" role="button">
-            <i class="am-icon-star"></i>
-            <i class="am-icon-star"></i>
-            <i class="am-icon-star-o"></i>
-            <i class="am-icon-star-o"></i>
-            <i class="am-icon-star-o"></i>
-        </a>
-    </form>
     <div class="am-tabs" data-am-tabs="{noSwipe: 1}">
         <ul class="am-tabs-nav am-nav am-nav-tabs">
             <li class="am-active"><a href="#CousrseImfomation">视频介绍</a></li>
             <li><a href="#VideoAttach" id="VideoAttachTitle">资源</a></li>
+            <li><a href="#Rating">评价</a></li>
         </ul>
 
         <div class="am-tabs-bd">
@@ -109,6 +101,28 @@
             <div class="am-tab-panel" id="VideoAttach">
                 资料加载中。。。<br />
                 请等待
+            </div>
+            <div class="am-tab-panel" id="Rating">
+                @for (int i = 0; i < ViewBag.Rating.Count; i++)
+                {
+                <form data-am-rating method="get">
+                    <input type="hidden" name="score">
+                    <a class="am-padding-lg" data-am-icons="star-o,star" data-am-score="@(5 - i)" role="button">
+                        @{
+                            int j = 0;
+                            for (j = 0; j < 5 - i; j++)
+                            {
+                                @:<i class="am-icon-star"></i>
+                            }
+                            for (int temp = 0; temp < 5 - j; temp++)
+                            {
+                                @:<i class="am-icon-star-o"></i>
+                            }
+}
+                    </a>
+                    /
+                </form>
+                }
             </div>
         </div>
     </div>

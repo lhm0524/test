@@ -101,5 +101,11 @@ namespace ZY.WEIKE.MSSQLDAL
             reader.Dispose();
             return list;
         }
+
+
+        public MODAL.ColleageModel GetEntity(string where, Dictionary<string, object> dic)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

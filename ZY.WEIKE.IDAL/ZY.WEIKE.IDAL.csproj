@@ -45,6 +45,7 @@
     <Compile Include="IDepartmentDAL.cs" />
     <Compile Include="IResourceDAL.cs" />
     <Compile Include="IUserDAL.cs" />
+    <Compile Include="IVotesDAL.cs" />
     <Compile Include="IWeiKeDAL.cs" />
     <Compile Include="IWK_UserLogDAL.cs" />
     <Compile Include="IWordsDAL.cs" />
@@ -55,6 +56,9 @@
       <Project>{934fde02-081a-4a87-a6fe-2ebe5b6cbfb5}</Project>
       <Name>ZY.WEIKE.MODAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

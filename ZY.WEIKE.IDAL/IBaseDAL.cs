@@ -53,5 +53,7 @@ namespace ZY.WEIKE.IDAL
         int GetAllPageCountForWhere(string where, Dictionary<string, object> dic);
 
         IEnumerable<T> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc);
+
+        T GetEntity(string where, Dictionary<string, object> dic);
     }
 }

@@ -10,10 +10,11 @@ namespace ZY.WEIKE.UI.Controllers
     {
         //
         // GET: /Play/
-        private BLL.WeiKeBLL weikebll { get; set; }
-        private BLL.ResourceBLL resbll { get; set; }
-        private BLL.WordsBLL worbll { get; set; }
-        private BLL.UsersBLL userbll { get; set; }
+        public BLL.WeiKeBLL weikebll { get; set; }
+        public BLL.ResourceBLL resbll { get; set; }
+        public BLL.WordsBLL worbll { get; set; }
+        public BLL.UsersBLL userbll { get; set; }
+        public BLL.VotesBLL votesbll { get; set; }
         //[OutputCache(Duration = 1 * 60 * 60)]
         public ActionResult Index(int id)
         {
@@ -22,6 +23,17 @@ namespace ZY.WEIKE.UI.Controllers
             ViewData.Model = weikebll.GetModelByPrimaryKey(id);
             MODAL.ResourceModel res = resbll.GetModelByPrimaryKey(id);
             ViewData.Add("res", res);
+            Random next = new Random();
+            List<int> Rating = new List<int>();
+
+            MODAL.VotesModel m = GetStar(id);
+            Rating.Add(m.Z_Star_1.Value);
+            Rating.Add(m.Z_Star_2.Value);
+            Rating.Add(m.Z_Star_3.Value);
+            Rating.Add(m.Z_Star_4.Value);
+            Rating.Add(m.Z_Star_5.Value);
+
+            ViewBag.Rating = Rating;
             return View();
         }
         public ActionResult LoadRes(int id)
@@ -55,5 +67,15 @@ namespace ZY.WEIKE.UI.Controllers
             }
             return Json(new { count = totalcount, list = listresult }, JsonRequestBehavior.AllowGet);
         }
+
+        private MODAL.VotesModel GetStar(int id)
+        {
+            votesbll = new BLL.VotesBLL();
+            string where = "Z_weikeId=@wid";
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("wid", id);
+            return votesbll.GetEntity(where, dic);
+        }
+
     }
 }

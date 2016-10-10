@@ -15,5 +15,9 @@ namespace ZY.WEIKE.MODAL
         public System.Int32 TypeId { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.String Description { get; set; }
+        public System.Int32 CollectSum { get; set; }
+        public System.Int32 PlaySum { get; set; }
+        public System.Int32 SupprtSum { get; set; }
+        public System.Int32 Rating { get; set; }
     }
 }

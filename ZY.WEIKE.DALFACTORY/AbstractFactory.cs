@@ -99,6 +99,18 @@ namespace ZY.WEIKE.DALFACTORY
             return dal;
         }
 
+        public static IDAL.IVotesDAL CreateVotesDALInstance()
+        {
+            IDAL.IVotesDAL dal;
+            dal = COMMONHELPER.CacheHelper.Get("IDAL_IVotesDAL") as IDAL.IVotesDAL;
+            if (dal == null)
+            {
+                dal = CreateInstance(NameSpace + ".VotesDAL") as IDAL.IVotesDAL;
+                COMMONHELPER.CacheHelper.Add("IDAL_IVotesDAL", dal);
+            }
+            return dal;
+        }
+
         private static object CreateInstance(string fullname)
         {
             Assembly assembly = Assembly.Load(AssemblyPath);
