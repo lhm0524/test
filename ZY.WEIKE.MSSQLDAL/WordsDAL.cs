@@ -81,7 +81,7 @@ namespace ZY.WEIKE.MSSQLDAL
                     sql += " asc";
                 }
             }
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, ps))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, ps))
             {
                 if (!reader.HasRows)
                 {

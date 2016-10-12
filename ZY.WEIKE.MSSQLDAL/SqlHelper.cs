@@ -27,7 +27,7 @@ namespace ZY.WEIKE.MSSQLDAL
         /// <param name="sql">sql语句</param>
         /// <param name="ps">sql语句中的参数</param>
         /// <param name="reader">sqldatareader对象</param>
-        public static SqlDataReader RunSql(string sql, SqlParameter[] ps)
+        public static SqlDataReader ExecuteReader(string sql, SqlParameter[] ps)
         {
             SqlConnection con = GetConnection();
             SqlDataReader reader;
@@ -38,6 +38,7 @@ namespace ZY.WEIKE.MSSQLDAL
                     cmd.Parameters.AddRange(ps);
                 }
                 con.Open();
+                //System.Diagnostics.Debug.WriteLine(cmd.Parameters);
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return reader;
             }

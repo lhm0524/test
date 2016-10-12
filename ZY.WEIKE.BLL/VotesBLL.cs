@@ -18,5 +18,9 @@ namespace ZY.WEIKE.BLL
         {
             return dal.GetEntity(where, dic);
         }
+        public int Vote(int userid, MODAL.VotesModel m)
+        {
+            return dal.Vote(userid, m);
+        }
     }
 }

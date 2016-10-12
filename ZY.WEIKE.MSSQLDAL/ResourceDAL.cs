@@ -42,7 +42,7 @@ namespace ZY.WEIKE.MSSQLDAL
         {
             MODAL.ResourceModel res = new MODAL.ResourceModel();
             string sql = "select AttachmentPath,VideoPath,VideoImgPath,TotalProgress from resource where weikeid=@id";
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 reader.Read();
                 res.AttachmentPath = reader.GetString(0);

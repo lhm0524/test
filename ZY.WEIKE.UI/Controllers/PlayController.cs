@@ -32,8 +32,9 @@ namespace ZY.WEIKE.UI.Controllers
             Rating.Add(m.Z_Star_3.Value);
             Rating.Add(m.Z_Star_4.Value);
             Rating.Add(m.Z_Star_5.Value);
-
+            ViewBag.Total = m.Z_Star_1 + m.Z_Star_2 + m.Z_Star_3 + m.Z_Star_4 + m.Z_Star_5;
             ViewBag.Rating = Rating;
+            ViewBag.Id = id;
             return View();
         }
         public ActionResult LoadRes(int id)
@@ -75,6 +76,38 @@ namespace ZY.WEIKE.UI.Controllers
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("wid", id);
             return votesbll.GetEntity(where, dic);
+        }
+
+        [HttpPost]
+        public ActionResult Votes(int score, int id)
+        {
+            votesbll = new BLL.VotesBLL();
+            int res = votesbll.Vote((int)Session["Id"], ll(score, id));
+            return Json(new { state =  res > 0 });
+        }
+        private MODAL.VotesModel ll(int score, int id)
+        {
+            MODAL.VotesModel m = new MODAL.VotesModel();
+            m.Z_WeiKeId = id;
+            switch (score)
+            {
+                case 1:
+                    m.Z_Star_1 = 1;
+                    break;
+                case 2:
+                    m.Z_Star_2 = 1;
+                    break;
+                case 3:
+                    m.Z_Star_3 = 1;
+                    break;
+                case 4:
+                    m.Z_Star_4 = 1;
+                    break;
+                default:
+                    m.Z_Star_5 = 1;
+                    break;
+            }
+            return m;
         }
 
     }

@@ -48,5 +48,14 @@ namespace ZY.WEIKE.BLL
         {
             return dal.GetModelByPrimaryKey(id);
         }
+        public IEnumerable<MODAL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
+        {
+            return dal.Manager_LoadPageEntities(pageIndex, pageSize, where,  dic, order, IsAsc, out totalCount);
+        }
+
+        public bool DeleteModelByPrimaryKey(int primarykey)
+        {
+            return dal.DeleteModelByPrimaryKey(primarykey) > 0;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ZY.WEIKE.MSSQLDAL
 
         public int CreateEntity(MODAL.VotesModel t)
         {
+
             throw new NotImplementedException();
         }
 
@@ -55,7 +56,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 sql += where;
             }
             SqlParameter[] ps = SqlHelper.BuildParameter(dic);
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, ps))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, ps))
             {
                 if (!reader.HasRows)
                 {
@@ -76,6 +77,49 @@ namespace ZY.WEIKE.MSSQLDAL
         public List<int> GetRatingCount(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
+        }
+
+
+        public int Vote(int userid, MODAL.VotesModel m)
+        {
+            string check = "select count(1) from votesview where Z_userid=@uid and Z_weikeid=@wid";
+            SqlParameter[] checkps = new SqlParameter[]
+            {
+                new SqlParameter(){ ParameterName = "@uid", Value = userid },
+                new SqlParameter(){ ParameterName = "@wid", Value = m.Z_WeiKeId }
+            };
+            if ((int)SqlHelper.ExecuteScalar(check, System.Data.CommandType.Text, checkps) != 0)
+            {
+                return -1;//用户已经为该课程投过票
+            }
+            string vote = "update Votes set {0}+=1 where Z_WeiKeId=@wid";
+            int res = (int)SqlHelper.ExecuteNonQuery(CheckStar(vote, m), System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter() { ParameterName = "@wid", Value = m.Z_WeiKeId } });
+            return res;
+        }
+        private string CheckStar(string sql, MODAL.VotesModel m)
+        {
+            if (m.Z_Star_1 != null)
+            {
+                sql = string.Format(sql, "Z_Star_1");
+            }
+            else if (m.Z_Star_2 != null)
+            {
+                sql = string.Format(sql, "Z_Star_2");
+            }
+            else if (m.Z_Star_3 != null)
+            {
+                sql = string.Format(sql, "Z_Star_3");
+            }
+            else if (m.Z_Star_4 != null)
+            {
+                sql = string.Format(sql, "Z_Star_4");
+            }
+            else
+            {
+                sql = string.Format(sql, "Z_Star_5");
+            }
+            System.Diagnostics.Debug.WriteLine(sql);
+            return sql;
         }
     }
 }

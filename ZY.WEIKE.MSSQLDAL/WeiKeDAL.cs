@@ -11,7 +11,12 @@ namespace ZY.WEIKE.MSSQLDAL
     {
         public int DeleteModelByPrimaryKey(int primartyKey)
         {
-            throw new NotImplementedException();
+            string sql = "delete Weike where id=@id";
+            SqlParameter[] ps = new SqlParameter[] 
+            {
+                new SqlParameter(){ ParameterName = "@id", Value = primartyKey}
+            };
+            return (int)SqlHelper.ExecuteNonQuery(sql, System.Data.CommandType.Text, ps);
         }
 
         public int CreateEntity(MODAL.WeiKeModel t)
@@ -48,7 +53,7 @@ namespace ZY.WEIKE.MSSQLDAL
             SqlParameter[] ps = SqlHelper.BuildParameter(dic);
 
 
-            using (reader = SqlHelper.RunSql(sql, ps))
+            using (reader = SqlHelper.ExecuteReader(sql, ps))
             {
                 while (reader.Read())
                 {
@@ -65,7 +70,7 @@ namespace ZY.WEIKE.MSSQLDAL
         public MODAL.WeiKeModel GetModelByPrimaryKey(int primaryKey)
         {
             string sql = "select TeacherId,typeid,CreateTime,Name,Detail,Description from Weike where Id=@id";
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 reader.Read();
 
@@ -105,7 +110,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 new SqlParameter("@PageSize", pageSize),
                 SqlHelper.BuildParameter(dic)[0]
             };
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, ps))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, ps))
             {
                 while (reader.Read())
                 {
@@ -142,7 +147,7 @@ namespace ZY.WEIKE.MSSQLDAL
             SqlDataReader reader;
             SqlParameter[] ps = SqlHelper.BuildParameter(dic);
 
-            reader = SqlHelper.RunSql(sql, ps);
+            reader = SqlHelper.ExecuteReader(sql, ps);
 
             while (reader.Read())
             {
@@ -160,6 +165,38 @@ namespace ZY.WEIKE.MSSQLDAL
 
         public MODAL.WeiKeModel GetEntity(string where, Dictionary<string, object> dic)
         {
+            throw new NotImplementedException();
+        }
+
+
+        public IEnumerable<MODAL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
+        {
+            List<MODAL.WeiKeModel> list = new List<MODAL.WeiKeModel>();
+
+            string sqlcount = "select count(1) from Weike where " + where;
+            totalCount = int.Parse(SqlHelper.ExecuteScalar(sqlcount, System.Data.CommandType.Text, SqlHelper.BuildParameter(dic)).ToString()) / pageSize + 1;
+            string sql = "select Id,Name,createtime,typeid from(select row_number() over (order by Id) as num,Id,Name,createtime,typeid from WeiKe where " + where + ") AS t where num >= (@PageIndex - 1) * @PageSize + 1 and num <= @PageSize * @PageIndex";
+            SqlParameter[] ps = new SqlParameter[]
+            {
+                new SqlParameter("@PageIndex", pageIndex),
+                new SqlParameter("@PageSize", pageSize)
+            };
+            List<SqlParameter> listps = ps.ToList();
+            listps.AddRange(SqlHelper.BuildParameter(dic));
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, listps.ToArray()))
+            {
+                
+                while (reader.Read())
+                {
+                    MODAL.WeiKeModel w = new MODAL.WeiKeModel();
+                    w.Id = reader.GetInt32(0);
+                    w.Name = reader.GetString(1);
+                    w.CreateTime = reader.GetDateTime(2);
+                    w.TypeId = reader.GetInt32(3);
+                    list.Add(w);
+                }
+            }
+            return list;
             throw new NotImplementedException();
         }
     }

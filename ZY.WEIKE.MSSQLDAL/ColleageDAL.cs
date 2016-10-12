@@ -39,7 +39,7 @@ namespace ZY.WEIKE.MSSQLDAL
             List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
             string sql = string.Format("select top {0} Id,Name from Colleage", top);
             SqlDataReader reader;
-            using (reader = SqlHelper.RunSql(sql, null))
+            using (reader = SqlHelper.ExecuteReader(sql, null))
             {
                 while (reader.Read())
                 {
@@ -55,21 +55,24 @@ namespace ZY.WEIKE.MSSQLDAL
 
         public IEnumerable<MODAL.ColleageModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
-            //string sql = "select * from Colleage";
-            //if (where.Length != 0)
-            //{
-            //    sql = sql + " where " + where;
-            //}
-            //SqlParameter[] ps = SqlHelper.BuildParameter(dic);
-            //SqlDataReader reader;
-            //SqlHelper.RunSql(sql, ps, out reader);
-
-            //while (reader.Read())
-            //{
-
-            //}
-            //SqlHelper.CloseConnection();
-            throw new NotImplementedException();
+            string sql = "select Id, Name from Colleage";
+            List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
+            sql = SqlHelper.BuildSql(sql, where, order, isAsc);
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, null))
+            {
+                if (!reader.HasRows)
+                {
+                    return list;
+                }
+                while (reader.Read())
+                {
+                    MODAL.ColleageModel m = new MODAL.ColleageModel();
+                    m.Id = reader.GetInt32(0);
+                    m.Name = reader.GetString(1);
+                    list.Add(m);
+                }
+            }
+            return list;
         }
 
         public IEnumerable<MODAL.ColleageModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
@@ -88,7 +91,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 SqlParameter[] ps1 = SqlHelper.BuildParameter(dic);
                 ps.Union(ps1);
             }
-            SqlDataReader reader = SqlHelper.RunSql(sql, ps);
+            SqlDataReader reader = SqlHelper.ExecuteReader(sql, ps);
             List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
             while (reader.Read())
             {

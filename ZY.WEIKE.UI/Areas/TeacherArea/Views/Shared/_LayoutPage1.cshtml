@@ -1,0 +1,103 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/Content/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="~/Content/assets/css/amazeui.min.css" />
+    <link href="~/Content/css/admin.css" rel="stylesheet" />
+    <style>
+        .am-form .am-form-group .error {
+            border-color: red;
+        }
+
+        .am-form .am-form-group label {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .am-form .am-form-group div {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .admin-content #main {
+            height: 2000em;
+        }
+    </style>
+    @RenderSection("head", true);
+</head>
+<body>
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <strong>W</strong> <small>教师</small>
+        </div>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+                <li><a href="javascript:;">管理员的姓名</a></li>
+                <li>
+                    <a href="javascript:;">退出</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+            <div class="am-offcanvas-bar admin-offcanvas-bar">
+                <ul class="am-list admin-sidebar-list">
+                    <li><a href="/Teacher/Home" id="a-home"><span class="am-icon-home"></span> 首页</a></li>
+                    <li><a href="#" id="a-user"><span class="am-icon-user"></span> 选课用户</a></li>
+                    <li><a href="/Teacher/Weike" id="a-weike"><span class="am-icon-pencil-square-o"></span> 微课管理</a></li>
+                    <li><a href="#" id="a-category"><span class="am-icon-pencil-square-o"></span> 增加类别</a></li>
+                    <li><a href="#" id="a-category"><span class="am-icon-pencil-square-o"></span> 查看留言</a></li>
+                </ul>
+                <div class="am-panel am-panel-default admin-sidebar-panel">
+                    <div class="am-panel-bd">
+                        <p><span class="am-icon-bookmark"></span> 公告</p>
+                        <p>欢迎使用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar end -->
+        <!-- content start -->
+        <div class="admin-content">
+            <div class="admin-content-body">
+                <div class="am-cf am-padding">
+                    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> /@RenderSection("nav", true) <small id="small-nav"></small></div>
+                </div>
+            @RenderBody()
+            </div>
+
+
+            <footer class="admin-content-footer">
+                    <hr>
+                    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+                </footer>
+        </div>
+        <!-- content end -->
+    </div>
+    <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+    <script>
+        //BindInputHover();
+    </script>
+</body>
+</html>
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/js/amazeui.min.js"></script>
+@RenderSection("script", true);

@@ -9,5 +9,7 @@ namespace ZY.WEIKE.IDAL
     public interface IWeiKeDAL : IDAL.IBaseDAL<MODAL.WeiKeModel>
     {
         IEnumerable<MODAL.WeiKeModel> LoadNewEntities(string where, Dictionary<string, object> dic, string order, bool isAsc);
+
+        IEnumerable<MODAL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount);
     }
 }

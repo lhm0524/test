@@ -17,5 +17,9 @@ namespace ZY.WEIKE.BLL
         {
             return dal.GetTopList(top);
         }
+        public IEnumerable<MODAL.ColleageModel> LoadEntites(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        {
+            return dal.LoadEntities(where, dic, order, isAsc);
+        }
     }
 }

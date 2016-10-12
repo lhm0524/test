@@ -106,7 +106,8 @@
                 @for (int i = 0; i < ViewBag.Rating.Count; i++)
                 {
                 <form data-am-rating method="get">
-                    <input type="hidden" name="score">
+                    <input type="hidden" name="score"/>
+                    <input type="hidden" name="id" value="@ViewBag.Id" />
                     <a class="am-padding-lg" data-am-icons="star-o,star" data-am-score="@(5 - i)" role="button">
                         @{
                             int j = 0;
@@ -120,9 +121,11 @@
                             }
 }
                     </a>
-                    /
+                    
+                    /&nbsp;@(String.Format("{0:F}", double.Parse(ViewBag.Rating[5-1-i].ToString()) / double.Parse(ViewBag.Total.ToString()) * 100))%
                 </form>
                 }
+                总评价人数:@ViewBag.Total
             </div>
         </div>
     </div>
@@ -156,7 +159,7 @@
        //等文档加载完成后再设置视频长度 否则会出现视频卡顿问题
     };
     function Rating(jsondata) {
-        $.post('/user/ss', jsondata, function (res) {
+        $.post('/Play/Votes', jsondata, function (res) {
 
         });
     }

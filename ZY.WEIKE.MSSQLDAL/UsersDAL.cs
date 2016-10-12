@@ -60,7 +60,7 @@ namespace ZY.WEIKE.MSSQLDAL
         public MODAL.UsersModel GetModelByPrimaryKey(int primaryKey)
         {
             string sql = "select Email,Birthday,Sex,UserName,Answer,UserImagePath,LastLoginTime,UserPwd,Id from Users where Id=@id";
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 MODAL.UsersModel m = new MODAL.UsersModel();
                 reader.Read();
@@ -136,7 +136,7 @@ namespace ZY.WEIKE.MSSQLDAL
         {
             MODAL.UsersModel u = new MODAL.UsersModel();
             string sql = "select UserImagePath,UserName from Users where Id=@id";
-            using (SqlDataReader reader = SqlHelper.RunSql(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 reader.Read();
                 u.UserImagePath = reader[0] is DBNull ? null : reader.GetString(0);

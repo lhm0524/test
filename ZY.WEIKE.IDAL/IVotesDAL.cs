@@ -8,5 +8,6 @@ namespace ZY.WEIKE.IDAL
     public interface IVotesDAL : IBaseDAL<MODAL.VotesModel>
     {
         List<int> GetRatingCount(string where, Dictionary<string, object> dic);
+        int Vote(int userid, MODAL.VotesModel m);
     }
 }

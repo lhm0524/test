@@ -17,5 +17,10 @@ namespace ZY.WEIKE.BLL
         {
             return dal.LoadByParentID(parentId);
         }
+
+        public MODAL.DepartmentModel GetEntityByPrimarykey(int primaryKey)
+        {
+            return dal.GetModelByPrimaryKey(primaryKey);
+        }
     }
 }
