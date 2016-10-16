@@ -38,7 +38,6 @@ namespace ZY.WEIKE.MSSQLDAL
                     cmd.Parameters.AddRange(ps);
                 }
                 con.Open();
-                //System.Diagnostics.Debug.WriteLine(cmd.Parameters);
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return reader;
             }

@@ -175,7 +175,22 @@ namespace ZY.WEIKE.MSSQLDAL
 
             string sqlcount = "select count(1) from Weike where " + where;
             totalCount = int.Parse(SqlHelper.ExecuteScalar(sqlcount, System.Data.CommandType.Text, SqlHelper.BuildParameter(dic)).ToString()) / pageSize + 1;
-            string sql = "select Id,Name,createtime,typeid from(select row_number() over (order by Id) as num,Id,Name,createtime,typeid from WeiKe where " + where + ") AS t where num >= (@PageIndex - 1) * @PageSize + 1 and num <= @PageSize * @PageIndex";
+            string sql = "select Id,Name,createtime,typeid from(select row_number() over (order by {0} Id) as num,Id,Name,createtime,typeid from WeiKe where " + where + ") AS t where num >= (@PageIndex - 1) * @PageSize + 1 and num <= @PageSize * @PageIndex";
+            if (order.Length != 0)
+            {
+                if (!IsAsc)
+                {
+                    sql = string.Format(sql, order  + " desc,");
+                }
+                else
+                {
+                    sql = string.Format(sql, order + " asc,");
+                }
+            }
+            else
+            {
+                sql = string.Format(sql, "");
+            }
             SqlParameter[] ps = new SqlParameter[]
             {
                 new SqlParameter("@PageIndex", pageIndex),
@@ -198,6 +213,32 @@ namespace ZY.WEIKE.MSSQLDAL
             }
             return list;
             throw new NotImplementedException();
+        }
+
+
+        public object AddWeiKeEntity(MODAL.WeiKeModel w, MODAL.ResourceModel res)
+        {
+            List<SqlParameter> list = new List<SqlParameter>();
+            SqlParameter attach = new SqlParameter() { ParameterName = "@attachmentpath", DbType = System.Data.DbType.String, Value = res.AttachmentPath };
+            if (res.AttachmentPath == null)
+            {
+                attach.Value = DBNull.Value;
+            }
+            list.Add(new SqlParameter("@name", w.Name));
+            list.Add(new SqlParameter("@Detail", w.Detail));
+            list.Add(new SqlParameter("@teacherid", w.TeacherId));
+            list.Add(new SqlParameter("@WeikeType", w.TypeId));
+            list.Add(new SqlParameter("@createtime", DateTime.Now));
+            list.Add(new SqlParameter("@description", w.Description));
+
+            list.Add(attach);
+            list.Add(new SqlParameter("@videopath", res.VideoPath));
+            list.Add(new SqlParameter("@imagepath", res.VideoImgPath));
+            list.Add(new SqlParameter("@totalprogress", res.TotalProgress));
+            SqlParameter[] ps = list.ToArray();
+            object result = SqlHelper.ExecuteScalar("p_InsertWeiKe", System.Data.CommandType.StoredProcedure, ps);
+
+            return result;
         }
     }
 }

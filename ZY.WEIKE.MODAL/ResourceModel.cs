@@ -10,7 +10,7 @@ namespace ZY.WEIKE.MODAL
     {
         public int Id { get; set; }
         public int WeiKeId { get; set; }
-        public string AttachmentPath { get; set; }
+        public String AttachmentPath { get; set; }
         public string VideoPath { get; set; }
         public string VideoImgPath { get; set; }
         public double TotalProgress { get; set; }

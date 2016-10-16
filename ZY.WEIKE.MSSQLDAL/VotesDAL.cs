@@ -60,16 +60,21 @@ namespace ZY.WEIKE.MSSQLDAL
             {
                 if (!reader.HasRows)
                 {
-                    return null;
+                    m.Z_Star_1 = 1;
+                    m.Z_Star_2 = 1;
+                    m.Z_Star_3 = 1;
+                    m.Z_Star_4 = 1;
+                    m.Z_Star_5 = 1;
+                    return m;
                 }
                 reader.Read();
-                m.Z_Id = reader.GetInt32(0);
+                m.Z_Id = reader.IsDBNull(0) ? 1 : reader.GetInt32(0);
                 m.Z_WeiKeId = reader.GetInt32(1);
-                m.Z_Star_1 = reader.GetInt32(2);
-                m.Z_Star_2 = reader.GetInt32(3);
-                m.Z_Star_3 = reader.GetInt32(4);
-                m.Z_Star_4 = reader.GetInt32(5);
-                m.Z_Star_5 = reader.GetInt32(6);
+                m.Z_Star_1 = reader.IsDBNull(2) ? 1 : reader.GetInt32(2);
+                m.Z_Star_2 = reader.IsDBNull(3) ? 1 : reader.GetInt32(3);
+                m.Z_Star_3 = reader.IsDBNull(4) ? 1 : reader.GetInt32(4);
+                m.Z_Star_4 = reader.IsDBNull(5) ? 1 : reader.GetInt32(5);
+                m.Z_Star_5 = reader.IsDBNull(6) ? 1 : reader.GetInt32(6);
             }
             return m;
         }

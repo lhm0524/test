@@ -3,12 +3,130 @@
     Layout = "~/Areas/TeacherArea/Views/Shared/_LayoutPage1.cshtml";
 }
 @section head {
+    <style>
+        form {
+            padding : 15px;
+        }
+        .am-g select {
+            width: 25%
+        }
+        .am-g span {
+            line-height: 37px;
+        }
+        .am-form-group .am-g input {
+            width: 25%;
+        }
+        .am-form-group .am-g textarea {
+            width: 60%;
+        }
+        [class*=am-u-]+[class*=am-u-]:last-child {
+            float:left;
+        }
 
+        form div .requirefrom {
+            line-height: 37px;
+            margin-left: 10px;
+            font-size: 0.2rem;
+        }
+        hr {
+            border: none;
+        }
+        .am-form-group .am-g input[type=file] {
+            vertical-align:central;
+            display:initial;
+            height:37px;
+        }
+        .error {
+            
+        }
+    </style>
 }
 @section nav{
     <a href="/Teacher/Weike">微课管理</a>/添加
 }
-<h2>Add</h2>
+<form action="/Teacher/Weike/Add" enctype='multipart/form-data' method="post" class="am-form" id="form1">
+    <div class="am-form-group">
+        <div class="am-g">
+            <span class="am-u-lg-2">所属分类：</span>
+            <select id="parentselect" class="am-u-lg-4">
+            @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["list_colleagemodel"])
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+            </select>
+            <div class="am-u-lg-1"></div>
+            <select required class="am-u-lg-4" id="typeid" name="typeid"></select>
+            <span class="requirefrom">*必选</span>
+            <div class="am-u-lg-1"></div>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">微课名称：</span>
+            <input required class="am-u-lg-6" type="text" name="Name" id="Name" value="" />
+            <div class="am-u-lg-4 requirefrom">*必填</div>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">简要描述：</span>
+            <input required class="am-u-lg-7" style="width: 45%" type="text" name="Description" id="Description" value="" />
+            <div class="am-u-lg-3 requirefrom">*必填</div>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">详细描述：</span>
+            <textarea required class="am-u-lg-10" id="Detail" name="Detail" rows="5" cols="10"></textarea>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">上传视频：</span>
+            <div class="am-form-group am-form-file">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的视频
+                <input id="video" name="video" type="file" accept="video/*" multiple>
+            </div>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">上传附件：</span>
+            <div class="am-form-group am-form-file">
+                <i class="am-icon-cloud-upload+"></i> 选择要上传的附件
+                <input id="attach" name="attach" type="file" accept="application/zip" multiple>
+            </div>
+        </div>
+        <hr />
+        <div class="am-g">
+            <span class="am-u-lg-2">上传图片：</span>
+            <div class="am-form-group am-form-file">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的图片
+                <input id="pic" name="pic" type="file" accept="image/*" multiple>
+            </div>
+        </div>
+        <div class="am-g">
+            <span class="am-u-lg-9"></span>
+            <button id="btn-submit" class="am-btn am-btn-primary am-u-lg-3" style="float:right">增加</button>
+        </div>
+    </div>
+</form>
 @section script {
-
+    <script>
+        window.onload = function () {
+            $('#parentselect').on('change', function (e) {
+                AppendDepartment($('#parentselect').val());
+            });
+        }
+        function AppendDepartment(Id) {
+            var select = document.getElementById('typeid');
+            select.innerHTML = '';
+            $.post('/Weike/LoadDepartment', { parentId: Id }, function (jsondata) {
+                for (var i = 0; i < jsondata.length; i++) {
+                    var option = document.createElement('option');
+                    option.innerText = jsondata[i].Name;
+                    option.value = jsondata[i].Id;
+                    if (i == 0) {
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                }
+            });
+        }
+    </script>
 }

@@ -57,5 +57,10 @@ namespace ZY.WEIKE.BLL
         {
             return dal.DeleteModelByPrimaryKey(primarykey) > 0;
         }
+
+        public bool CreateEntity(MODAL.WeiKeModel w, MODAL.ResourceModel res)
+        {
+            return (int)dal.AddWeiKeEntity(w, res) > 1;
+        }
     }
 }

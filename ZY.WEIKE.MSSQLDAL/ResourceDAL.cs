@@ -45,7 +45,7 @@ namespace ZY.WEIKE.MSSQLDAL
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 reader.Read();
-                res.AttachmentPath = reader.GetString(0);
+                res.AttachmentPath = reader.IsDBNull(0) ? null : reader.GetString(0);
                 res.VideoImgPath = reader.GetString(2);
                 res.VideoPath = reader.GetString(1);
                 res.TotalProgress = reader.GetDouble(3);

@@ -22,6 +22,7 @@ namespace ZY.WEIKE.UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            COMMONHELPER.CacheHelper.Add("filespath", System.Configuration.ConfigurationManager.AppSettings["filespath"]);
         }
         protected void Application_Error(object sender, EventArgs e)
         {

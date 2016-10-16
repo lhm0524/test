@@ -135,6 +135,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Upload.cs" />
+    <Compile Include="App_Start\UploadFile.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\HomeController.cs" />
@@ -341,6 +343,10 @@
     <ProjectReference Include="..\ZY.WEIKE.BLL\ZY.WEIKE.BLL.csproj">
       <Project>{cf958cae-2cfb-4224-898f-9ccb5b879e0b}</Project>
       <Name>ZY.WEIKE.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZY.WEIKE.COMMONHELPER\ZY.WEIKE.COMMONHELPER.csproj">
+      <Project>{3cccaa88-f54c-46f2-bcf8-4075c0535773}</Project>
+      <Name>ZY.WEIKE.COMMONHELPER</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZY.WEIKE.MODAL\ZY.WEIKE.MODAL.csproj">
       <Project>{934fde02-081a-4a87-a6fe-2ebe5b6cbfb5}</Project>
