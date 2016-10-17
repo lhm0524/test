@@ -23,24 +23,24 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.ResourceModel t)
+        public int CreateEntity(MODEL.ResourceModel t)
         {
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.ResourceModel t)
+        public int EditEntity(MODEL.ResourceModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.ResourceModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.ResourceModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.ResourceModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.ResourceModel GetModelByPrimaryKey(int primaryKey)
         {
-            MODAL.ResourceModel res = new MODAL.ResourceModel();
+            MODEL.ResourceModel res = new MODEL.ResourceModel();
             string sql = "select AttachmentPath,VideoPath,VideoImgPath,TotalProgress from resource where weikeid=@id";
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
@@ -58,13 +58,13 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.ResourceModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic,  string order, bool isAsc)
+        public IEnumerable<MODEL.ResourceModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic,  string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
 
-        public MODAL.ResourceModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.ResourceModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

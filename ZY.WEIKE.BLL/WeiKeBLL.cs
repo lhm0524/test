@@ -24,7 +24,7 @@ namespace ZY.WEIKE.BLL
         /// <param name="isAsc">是否是升序排序</param>
         /// <param name="type">类型</param>
         /// <returns>IEnumerable枚举</returns>
-        public IEnumerable<MODAL.WeiKeModel> LoadEntities(string where, string order, Dictionary<string, object> dic, bool isAsc, int type)
+        public IEnumerable<MODEL.WeiKeModel> LoadEntities(string where, string order, Dictionary<string, object> dic, bool isAsc, int type)
         {
             if (type == 1)
             {
@@ -34,7 +34,7 @@ namespace ZY.WEIKE.BLL
             return dal.LoadEntities(where, dic, order, isAsc);
         }
 
-        public IEnumerable<MODAL.WeiKeModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string,object> dic,string order, bool isAsc)
+        public IEnumerable<MODEL.WeiKeModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string,object> dic,string order, bool isAsc)
         {
             return dal.LoadPageEntities(pageIndex, pageSize, out totalCount, whereLambda, dic, order, isAsc);
         }
@@ -44,11 +44,11 @@ namespace ZY.WEIKE.BLL
             return dal.GetAllPageCountForWhere(where, dic);
         }
 
-        public MODAL.WeiKeModel GetModelByPrimaryKey(int id)
+        public MODEL.WeiKeModel GetModelByPrimaryKey(int id)
         {
             return dal.GetModelByPrimaryKey(id);
         }
-        public IEnumerable<MODAL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
+        public IEnumerable<MODEL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
         {
             return dal.Manager_LoadPageEntities(pageIndex, pageSize, where,  dic, order, IsAsc, out totalCount);
         }
@@ -58,7 +58,7 @@ namespace ZY.WEIKE.BLL
             return dal.DeleteModelByPrimaryKey(primarykey) > 0;
         }
 
-        public bool CreateEntity(MODAL.WeiKeModel w, MODAL.ResourceModel res)
+        public bool CreateEntity(MODEL.WeiKeModel w, MODEL.ResourceModel res)
         {
             return (int)dal.AddWeiKeEntity(w, res) > 1;
         }

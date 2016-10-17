@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZY.WEIKE.IDAL
 {
-    public interface IDepartmentDAL : IDAL.IBaseDAL<MODAL.DepartmentModel>
+    public interface IDepartmentDAL : IDAL.IBaseDAL<MODEL.DepartmentModel>
     {
-        IEnumerable<MODAL.DepartmentModel> LoadByParentID(int parentId);
+        IEnumerable<MODEL.DepartmentModel> LoadByParentID(int parentId);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZY.WEIKE.IDAL
 {
-    public interface IResourceDAL : IDAL.IBaseDAL<MODAL.ResourceModel>
+    public interface IResourceDAL : IDAL.IBaseDAL<MODEL.ResourceModel>
     {
         string GetImgPath(int weikeid);
     }

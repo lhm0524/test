@@ -36,7 +36,7 @@ namespace ZY.WEIKE.UI.Controllers
         // POST: /Comment/Create
 
         [HttpPost][Filter.StudentFilter]
-        public ActionResult Create(MODAL.WordsModel wm)
+        public ActionResult Create(MODEL.WordsModel wm)
         {
             commentbll = new BLL.WordsBLL();
             wm.UserId = (int)Session["Id"];

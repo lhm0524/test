@@ -94,7 +94,7 @@
     </div>
     <!--分类概览-->
     <div class="am-g" style="margin: 0 auto">
-        @{foreach (ZY.WEIKE.MODAL.ColleageModel item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["list_colleagemodel"])
+        @{foreach (ZY.WEIKE.MODEL.ColleageModel item in (IEnumerable<ZY.WEIKE.MODEL.ColleageModel>)ViewData["list_colleagemodel"])
         {
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3" style="text-align: center">
                 <div id="colleage_@item.Id" class="navigate am-g">
@@ -133,7 +133,7 @@
         </div>
         <div class="am-list-news-bd">
             <ul class="am-list">
-                @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.WeiKeModel>)ViewData["list_new"])
+                @foreach (var item in (IEnumerable<ZY.WEIKE.MODEL.WeiKeModel>)ViewData["list_new"])
                 {
 
                     <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">

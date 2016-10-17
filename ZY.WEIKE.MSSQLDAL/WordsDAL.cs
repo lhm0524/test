@@ -16,7 +16,7 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.WordsModel t)
+        public int CreateEntity(MODEL.WordsModel t)
         {
             string sql = "insert into Words (WeiKeId,UserID,WordsTitle,WordsBody,WordsTime) values(@wid, @uid,@wt,@wb,@time)";
             object o;
@@ -41,17 +41,17 @@ namespace ZY.WEIKE.MSSQLDAL
             return result;
         }
 
-        public int EditEntity(MODAL.WordsModel t)
+        public int EditEntity(MODEL.WordsModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.WordsModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WordsModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.WordsModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.WordsModel GetModelByPrimaryKey(int primaryKey)
         {
             throw new NotImplementedException();
         }
@@ -61,10 +61,10 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.WordsModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WordsModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             string sql = "select Id,UserID,WordsTitle,WordsBody,WordsTime from(select row_number() over (order by Id) as num,Id,UserID,WordsTitle,WordsBody,WordsTime from words where WeiKeId = @id) AS t where num >= (@PageIndex - 1) * @PageSize + 1 and num <= @PageSize * @PageIndex";
-            List<MODAL.WordsModel> list = new List<MODAL.WordsModel>();
+            List<MODEL.WordsModel> list = new List<MODEL.WordsModel>();
             string sqlcount = "select count(1) from words where weikeid=@id";
             totalCount = int.Parse(SqlHelper.ExecuteScalar(sqlcount, System.Data.CommandType.Text, SqlHelper.BuildParameter(dic)).ToString()) / pageSize + 1;
             SqlParameter[] ps = new SqlParameter[]
@@ -89,7 +89,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 }
                 while (reader.Read())
                 {
-                    MODAL.WordsModel m = new MODAL.WordsModel();
+                    MODEL.WordsModel m = new MODEL.WordsModel();
                     m.Id = reader.GetInt32(0);
                     m.UserId = reader.GetInt32(1);
                     m.WordsTitle = reader.IsDBNull(2) ? null : reader.GetString(2);
@@ -103,7 +103,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public MODAL.WordsModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.WordsModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

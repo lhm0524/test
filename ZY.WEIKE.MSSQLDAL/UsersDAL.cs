@@ -16,7 +16,7 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.UsersModel t)
+        public int CreateEntity(MODEL.UsersModel t)
         {
             SqlParameter[] ps = new SqlParameter[] 
             { 
@@ -31,7 +31,7 @@ namespace ZY.WEIKE.MSSQLDAL
             return insertcount;
         }
 
-        public int EditEntity(MODAL.UsersModel t)
+        public int EditEntity(MODEL.UsersModel t)
         {
             string sql = "update Users set Email=@email,Birthday=@birthday,Sex=@sex,UserName=@username,Answer=@answer,UserPwd=@userpwd,UserImagePath=@imgpath where Id=@id";
 
@@ -52,17 +52,17 @@ namespace ZY.WEIKE.MSSQLDAL
             return result;
         }
 
-        public IEnumerable<MODAL.UsersModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.UsersModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.UsersModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.UsersModel GetModelByPrimaryKey(int primaryKey)
         {
             string sql = "select Email,Birthday,Sex,UserName,Answer,UserImagePath,LastLoginTime,UserPwd,Id from Users where Id=@id";
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
-                MODAL.UsersModel m = new MODAL.UsersModel();
+                MODEL.UsersModel m = new MODEL.UsersModel();
                 reader.Read();
                 m.Email = reader.GetString(0);
                 m.Birthday = reader.GetDateTime(1);
@@ -82,7 +82,7 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.UsersModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.UsersModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
@@ -132,9 +132,9 @@ namespace ZY.WEIKE.MSSQLDAL
             }
         }
 
-        public MODAL.UsersModel GetImageAndName(int primaryKey)
+        public MODEL.UsersModel GetImageAndName(int primaryKey)
         {
-            MODAL.UsersModel u = new MODAL.UsersModel();
+            MODEL.UsersModel u = new MODEL.UsersModel();
             string sql = "select UserImagePath,UserName from Users where Id=@id";
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
@@ -145,7 +145,7 @@ namespace ZY.WEIKE.MSSQLDAL
             return u;
         }
 
-        public int IsExists(MODAL.UsersModel usermodel)
+        public int IsExists(MODEL.UsersModel usermodel)
         {
             string sql = "select count(1) from users where UserName=@username or Email=@email";
             SqlParameter[] ps = new SqlParameter[]
@@ -170,7 +170,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public MODAL.UsersModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.UsersModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

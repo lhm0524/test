@@ -43,6 +43,8 @@
     <Compile Include="IBaseDAL.cs" />
     <Compile Include="IColleageDAL.cs" />
     <Compile Include="IDepartmentDAL.cs" />
+    <Compile Include="IMessagesDAL.cs" />
+    <Compile Include="IMessagesType.cs" />
     <Compile Include="IResourceDAL.cs" />
     <Compile Include="IUserDAL.cs" />
     <Compile Include="IVotesDAL.cs" />
@@ -52,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZY.WEIKE.MODAL\ZY.WEIKE.MODAL.csproj">
+    <ProjectReference Include="..\ZY.WEIKE.MODAL\ZY.WEIKE.MODEL.csproj">
       <Project>{934fde02-081a-4a87-a6fe-2ebe5b6cbfb5}</Project>
-      <Name>ZY.WEIKE.MODAL</Name>
+      <Name>ZY.WEIKE.MODEL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -19,20 +19,20 @@ namespace ZY.WEIKE.MSSQLDAL
             return (int)SqlHelper.ExecuteNonQuery(sql, System.Data.CommandType.Text, ps);
         }
 
-        public int CreateEntity(MODAL.WeiKeModel t)
+        public int CreateEntity(MODEL.WeiKeModel t)
         {
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.WeiKeModel t)
+        public int EditEntity(MODEL.WeiKeModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.WeiKeModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WeiKeModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             string sql = "select Id, Name, Description from weike";
-            List<MODAL.WeiKeModel> list = new List<MODAL.WeiKeModel>();
+            List<MODEL.WeiKeModel> list = new List<MODEL.WeiKeModel>();
             if (where.Length != 0)
             {
                 sql = sql + " where " + where;
@@ -57,7 +57,7 @@ namespace ZY.WEIKE.MSSQLDAL
             {
                 while (reader.Read())
                 {
-                    MODAL.WeiKeModel m = new MODAL.WeiKeModel();
+                    MODEL.WeiKeModel m = new MODEL.WeiKeModel();
                     m.Id = reader.GetInt32(0);
                     m.Name = reader.GetString(1);
                     m.Description = reader.GetString(2);
@@ -67,14 +67,14 @@ namespace ZY.WEIKE.MSSQLDAL
             return list;
         }
 
-        public MODAL.WeiKeModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.WeiKeModel GetModelByPrimaryKey(int primaryKey)
         {
             string sql = "select TeacherId,typeid,CreateTime,Name,Detail,Description from Weike where Id=@id";
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, new SqlParameter[] { new SqlParameter("@id", primaryKey) }))
             {
                 reader.Read();
 
-                MODAL.WeiKeModel m = new MODAL.WeiKeModel();
+                MODEL.WeiKeModel m = new MODEL.WeiKeModel();
                 m.TeacherId = reader.GetInt32(0);
                 m.TypeId = reader.GetInt32(1);
                 m.CreateTime = reader.GetDateTime(2);
@@ -97,9 +97,9 @@ namespace ZY.WEIKE.MSSQLDAL
             return pagecount;
         }
 
-        public IEnumerable<MODAL.WeiKeModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WeiKeModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
-            List<MODAL.WeiKeModel> list = new List<MODAL.WeiKeModel>();
+            List<MODEL.WeiKeModel> list = new List<MODEL.WeiKeModel>();
 
             string sqlcount = "select count(1) from Weike where typeid=@id";
             totalCount = int.Parse(SqlHelper.ExecuteScalar(sqlcount, System.Data.CommandType.Text, SqlHelper.BuildParameter(dic)).ToString()) / pageSize + 1;
@@ -114,7 +114,7 @@ namespace ZY.WEIKE.MSSQLDAL
             {
                 while (reader.Read())
                 {
-                    MODAL.WeiKeModel w = new MODAL.WeiKeModel();
+                    MODEL.WeiKeModel w = new MODEL.WeiKeModel();
                     w.Id = reader.GetInt32(0);
                     w.Name = reader.GetString(1);
                     w.Description = reader.GetString(2);
@@ -124,10 +124,10 @@ namespace ZY.WEIKE.MSSQLDAL
             return list;
         }
 
-        public IEnumerable<MODAL.WeiKeModel> LoadNewEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WeiKeModel> LoadNewEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             string sql = "select top 3 Id, Name, Description from weike";
-            List<MODAL.WeiKeModel> list = new List<MODAL.WeiKeModel>();
+            List<MODEL.WeiKeModel> list = new List<MODEL.WeiKeModel>();
             if (where.Length != 0)
             {
                 sql = sql + " where " + where;
@@ -151,7 +151,7 @@ namespace ZY.WEIKE.MSSQLDAL
 
             while (reader.Read())
             {
-                MODAL.WeiKeModel m = new MODAL.WeiKeModel();
+                MODEL.WeiKeModel m = new MODEL.WeiKeModel();
                 m.Id = reader.GetInt32(0);
                 m.Name = reader.GetString(1);
                 m.Description = reader.GetString(2);
@@ -163,15 +163,15 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public MODAL.WeiKeModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.WeiKeModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }
 
 
-        public IEnumerable<MODAL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
+        public IEnumerable<MODEL.WeiKeModel> Manager_LoadPageEntities(int pageIndex, int pageSize, string where, Dictionary<string, object> dic, string order, bool IsAsc, out int totalCount)
         {
-            List<MODAL.WeiKeModel> list = new List<MODAL.WeiKeModel>();
+            List<MODEL.WeiKeModel> list = new List<MODEL.WeiKeModel>();
 
             string sqlcount = "select count(1) from Weike where " + where;
             totalCount = int.Parse(SqlHelper.ExecuteScalar(sqlcount, System.Data.CommandType.Text, SqlHelper.BuildParameter(dic)).ToString()) / pageSize + 1;
@@ -203,7 +203,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 
                 while (reader.Read())
                 {
-                    MODAL.WeiKeModel w = new MODAL.WeiKeModel();
+                    MODEL.WeiKeModel w = new MODEL.WeiKeModel();
                     w.Id = reader.GetInt32(0);
                     w.Name = reader.GetString(1);
                     w.CreateTime = reader.GetDateTime(2);
@@ -216,7 +216,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public object AddWeiKeEntity(MODAL.WeiKeModel w, MODAL.ResourceModel res)
+        public object AddWeiKeEntity(MODEL.WeiKeModel w, MODEL.ResourceModel res)
         {
             List<SqlParameter> list = new List<SqlParameter>();
             SqlParameter attach = new SqlParameter() { ParameterName = "@attachmentpath", DbType = System.Data.DbType.String, Value = res.AttachmentPath };

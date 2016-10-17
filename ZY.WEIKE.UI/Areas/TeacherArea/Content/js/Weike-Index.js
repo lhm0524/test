@@ -28,7 +28,7 @@ function BindEvent() {
                 break;
             case 'delete':
                 document.getElementById('confirm').dataset.id = Id;
-                $('#Modal-Delete').modal('open');
+                $('#MODEL-Delete').MODEL('open');
                 break;
             default:
                 break;

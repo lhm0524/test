@@ -1,4 +1,4 @@
-﻿@model ZY.WEIKE.MODAL.UsersModel
+﻿@model ZY.WEIKE.MODEL.UsersModel
 
 @{
     Layout = null;
@@ -84,7 +84,7 @@
             height: 120px;
         }
 
-        #my-modal {
+        #my-MODEL {
             padding: 1rem;
         }
 
@@ -166,10 +166,10 @@
     </div>
     <button id="btn_saveentity" class="am-btn am-btn-block am-btn-primary">保存</button>
     <button id="btn_logout" class="am-btn am-btn-block">注销</button>
-    <div class="am-modal am-modal-alert" tabindex="-1" id="sex-modal">
-        <div class="am-modal-dialog">
-            <div class="am-modal-hd" style="text-align: left">性别</div>
-            <div class="am-modal-bd">
+    <div class="am-MODEL am-MODEL-alert" tabindex="-1" id="sex-MODEL">
+        <div class="am-MODEL-dialog">
+            <div class="am-MODEL-hd" style="text-align: left">性别</div>
+            <div class="am-MODEL-bd">
                 <table style="width: 100%">
                     <tr id="tr_man">
                         <td align="left">
@@ -192,22 +192,22 @@
                     </tr>
                 </table>
             </div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn">取消</span>
-                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <div class="am-MODEL-footer">
+                <span class="am-MODEL-btn">取消</span>
+                <span class="am-MODEL-btn" data-am-MODEL-confirm>确定</span>
             </div>
         </div>
     </div>
-    <div class="am-modal am-modal-prompt" tabindex="-1" id="editmodal">
-        <div class="am-modal-dialog">
-            <div id="edittitle" class="am-modal-hd">Amaze UI</div>
-            <div class="am-modal-bd">
+    <div class="am-MODEL am-MODEL-prompt" tabindex="-1" id="editMODEL">
+        <div class="am-MODEL-dialog">
+            <div id="edittitle" class="am-MODEL-hd">Amaze UI</div>
+            <div class="am-MODEL-bd">
 
-                <input id="edittext" type="text" class="am-modal-prompt-input" />
+                <input id="edittext" type="text" class="am-MODEL-prompt-input" />
             </div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                <span class="am-modal-btn" data-am-modal-confirm id="btn_ensure">确定</span>
+            <div class="am-MODEL-footer">
+                <span class="am-MODEL-btn" data-am-MODEL-cancel>取消</span>
+                <span class="am-MODEL-btn" data-am-MODEL-confirm id="btn_ensure">确定</span>
             </div>
         </div>
     </div>

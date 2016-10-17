@@ -20,7 +20,7 @@ namespace ZY.WEIKE.BLL
             return dal.GetImgPath(weikeid);
         }
 
-        public MODAL.ResourceModel GetModelByPrimaryKey(int id)
+        public MODEL.ResourceModel GetModelByPrimaryKey(int id)
         {
             return dal.GetModelByPrimaryKey(id);
         }

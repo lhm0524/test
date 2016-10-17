@@ -29,25 +29,25 @@ namespace ZY.WEIKE.BLL
             return id;
         }
 
-        public MODAL.UsersModel GetEntity(int primaryKey)
+        public MODEL.UsersModel GetEntity(int primaryKey)
         {
             return dal.GetModelByPrimaryKey(primaryKey);
         }
 
-        public MODAL.UsersModel LoadImageAndName(int primaryKey)
+        public MODEL.UsersModel LoadImageAndName(int primaryKey)
         {
             return dal.GetImageAndName(primaryKey);
         }
-        public bool EditEntity(MODAL.UsersModel t)
+        public bool EditEntity(MODEL.UsersModel t)
         {
             return dal.EditEntity(t) > 0;
         }
-        public bool IsExist(MODAL.UsersModel userModel)
+        public bool IsExist(MODEL.UsersModel userModel)
         {
             return dal.IsExists(userModel) > 1;
         }
 
-        public bool CreateEntity(MODAL.UsersModel user)
+        public bool CreateEntity(MODEL.UsersModel user)
         {
             return dal.CreateEntity(user) > 0;
         }

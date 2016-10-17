@@ -21,12 +21,12 @@ namespace ZY.WEIKE.UI.Controllers
             weikebll = new BLL.WeiKeBLL();
             resbll = new BLL.ResourceBLL();
             ViewData.Model = weikebll.GetModelByPrimaryKey(id);
-            MODAL.ResourceModel res = resbll.GetModelByPrimaryKey(id);
+            MODEL.ResourceModel res = resbll.GetModelByPrimaryKey(id);
             ViewData.Add("res", res);
             Random next = new Random();
             List<int> Rating = new List<int>();
 
-            MODAL.VotesModel m = GetStar(id);
+            MODEL.VotesModel m = GetStar(id);
             Rating.Add(m.Z_Star_1.Value);
             Rating.Add(m.Z_Star_2.Value);
             Rating.Add(m.Z_Star_3.Value);
@@ -40,11 +40,11 @@ namespace ZY.WEIKE.UI.Controllers
         public ActionResult LoadRes(int id)
         {
             resbll = new BLL.ResourceBLL();
-            MODAL.ResourceModel res = resbll.GetModelByPrimaryKey(id);
+            MODEL.ResourceModel res = resbll.GetModelByPrimaryKey(id);
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CreateWords(MODAL.WordsModel w)
+        public ActionResult CreateWords(MODEL.WordsModel w)
         {
 
             return Json(null, JsonRequestBehavior.AllowGet);
@@ -57,11 +57,11 @@ namespace ZY.WEIKE.UI.Controllers
             int totalcount;
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", id);
-            IEnumerable<MODAL.WordsModel> list = worbll.LoadPageEntities(pageindex, pagesize, out totalcount, "", dic, order, isasc);
+            IEnumerable<MODEL.WordsModel> list = worbll.LoadPageEntities(pageindex, pagesize, out totalcount, "", dic, order, isasc);
             List<object> listresult = new List<object>();
-            foreach (MODAL.WordsModel item in list)
+            foreach (MODEL.WordsModel item in list)
             {
-                MODAL.UsersModel m = new MODAL.UsersModel();
+                MODEL.UsersModel m = new MODEL.UsersModel();
                 m = userbll.LoadImageAndName(item.UserId);
                 string path = "/Users/UserImg/" + (m.UserImagePath == null ? "default-personal.png" : m.UserImagePath);
                 listresult.Add(new { WordsBody = item.WordsBody, WordsTime = item.WordsTime, WordsTitle = item.WordsTitle, UserName = m.UserName, Img = path });
@@ -69,7 +69,7 @@ namespace ZY.WEIKE.UI.Controllers
             return Json(new { count = totalcount, list = listresult }, JsonRequestBehavior.AllowGet);
         }
 
-        private MODAL.VotesModel GetStar(int id)
+        private MODEL.VotesModel GetStar(int id)
         {
             votesbll = new BLL.VotesBLL();
             string where = "Z_weikeId=@wid";
@@ -85,9 +85,9 @@ namespace ZY.WEIKE.UI.Controllers
             int res = votesbll.Vote((int)Session["Id"], ll(score, id));
             return Json(new { state =  res > 0 });
         }
-        private MODAL.VotesModel ll(int score, int id)
+        private MODEL.VotesModel ll(int score, int id)
         {
-            MODAL.VotesModel m = new MODAL.VotesModel();
+            MODEL.VotesModel m = new MODEL.VotesModel();
             m.Z_WeiKeId = id;
             switch (score)
             {

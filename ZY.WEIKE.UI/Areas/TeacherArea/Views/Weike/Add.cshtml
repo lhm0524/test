@@ -49,7 +49,7 @@
         <div class="am-g">
             <span class="am-u-lg-2">所属分类：</span>
             <select id="parentselect" class="am-u-lg-4">
-            @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["list_colleagemodel"])
+            @foreach (var item in (IEnumerable<ZY.WEIKE.MODEL.ColleageModel>)ViewData["list_colleagemodel"])
             {
                 <option value="@item.Id">@item.Name</option>
             }

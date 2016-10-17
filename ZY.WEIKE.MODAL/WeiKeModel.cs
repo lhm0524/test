@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZY.WEIKE.MODAL
+namespace ZY.WEIKE.MODEL
 {
     public class WeiKeModel
     {

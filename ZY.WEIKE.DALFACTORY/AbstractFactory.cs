@@ -111,6 +111,30 @@ namespace ZY.WEIKE.DALFACTORY
             return dal;
         }
 
+        public static IDAL.IMessagesDAL CreateMessagesInstance()
+        {
+            IDAL.IMessagesDAL dal;
+            dal = COMMONHELPER.CacheHelper.Get("IDAL_IMessagesDAL") as IDAL.IMessagesDAL;
+            if (dal == null)
+            {
+                dal = CreateInstance(NameSpace + ".MessagesDAL") as IDAL.IMessagesDAL;
+                COMMONHELPER.CacheHelper.Add("IDAL_IMessagesDAL", dal);
+            }
+            return dal;
+        }
+
+        public static IDAL.IMessagesType CreateMessagesTypeInstance()
+        {
+            IDAL.IMessagesType dal;
+            dal = COMMONHELPER.CacheHelper.Get("IDAL_IMessagesType") as IDAL.IMessagesType;
+            if (dal == null)
+            {
+                dal = CreateInstance(NameSpace + ".MessagesTypeDAL") as IDAL.IMessagesType;
+                COMMONHELPER.CacheHelper.Add("IDAL_IMessagesType", dal);
+            }
+            return dal;
+        }
+
         private static object CreateInstance(string fullname)
         {
             Assembly assembly = Assembly.Load(AssemblyPath);

@@ -16,7 +16,7 @@ namespace ZY.WEIKE.UI.Controllers
         public ActionResult Index(string name, int Id)
         {
             departmentbll = new BLL.DepartmentBLL();
-            IEnumerable<MODAL.DepartmentModel> list = departmentbll.LoadByParentID(Id);
+            IEnumerable<MODEL.DepartmentModel> list = departmentbll.LoadByParentID(Id);
             ViewData.Add("cl_department", list);
             return View();
         }
@@ -26,7 +26,7 @@ namespace ZY.WEIKE.UI.Controllers
             weikebll = new BLL.WeiKeBLL();
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", Id);
-            IEnumerable<MODAL.WeiKeModel> list = weikebll.LoadEntities("typeid=@id", "createtime", dic, true, 2);
+            IEnumerable<MODEL.WeiKeModel> list = weikebll.LoadEntities("typeid=@id", "createtime", dic, true, 2);
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
@@ -36,7 +36,7 @@ namespace ZY.WEIKE.UI.Controllers
             int totalCount;
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", type);
-            IEnumerable<MODAL.WeiKeModel> list = weikebll.LoadPageEntities(pageindex, pagesize, out totalCount, "typeid=@id", dic, "", true);
+            IEnumerable<MODEL.WeiKeModel> list = weikebll.LoadPageEntities(pageindex, pagesize, out totalCount, "typeid=@id", dic, "", true);
             return Json(new { count = totalCount, data = list}, JsonRequestBehavior.AllowGet);
         }
 

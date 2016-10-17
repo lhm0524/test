@@ -348,9 +348,9 @@
       <Project>{3cccaa88-f54c-46f2-bcf8-4075c0535773}</Project>
       <Name>ZY.WEIKE.COMMONHELPER</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZY.WEIKE.MODAL\ZY.WEIKE.MODAL.csproj">
+    <ProjectReference Include="..\ZY.WEIKE.MODAL\ZY.WEIKE.MODEL.csproj">
       <Project>{934fde02-081a-4a87-a6fe-2ebe5b6cbfb5}</Project>
-      <Name>ZY.WEIKE.MODAL</Name>
+      <Name>ZY.WEIKE.MODEL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

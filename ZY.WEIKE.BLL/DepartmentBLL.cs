@@ -13,12 +13,12 @@ namespace ZY.WEIKE.BLL
         {
             dal = DALFACTORY.AbstractFactory.CreateDepartmentDALInstance();
         }
-        public IEnumerable<MODAL.DepartmentModel> LoadByParentID(int parentId)
+        public IEnumerable<MODEL.DepartmentModel> LoadByParentID(int parentId)
         {
             return dal.LoadByParentID(parentId);
         }
 
-        public MODAL.DepartmentModel GetEntityByPrimarykey(int primaryKey)
+        public MODEL.DepartmentModel GetEntityByPrimarykey(int primaryKey)
         {
             return dal.GetModelByPrimaryKey(primaryKey);
         }

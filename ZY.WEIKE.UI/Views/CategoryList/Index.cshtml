@@ -92,7 +92,7 @@
                 <li>
                     <div data-typeid="0">全部</div>
                 </li>
-                @foreach (ZY.WEIKE.MODAL.DepartmentModel item in (IEnumerable<ZY.WEIKE.MODAL.DepartmentModel>)ViewData["cl_department"])
+                @foreach (ZY.WEIKE.MODEL.DepartmentModel item in (IEnumerable<ZY.WEIKE.MODEL.DepartmentModel>)ViewData["cl_department"])
                 {   
                 <li>
                     <div data-typeid="@item.Id">@item.Name</div>

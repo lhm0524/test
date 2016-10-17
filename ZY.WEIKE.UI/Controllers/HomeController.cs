@@ -14,8 +14,8 @@ namespace ZY.WEIKE.UI.Controllers
         private BLL.ColleageBLL colleageBll;
         private BLL.WeiKeBLL weikeBll;
         private BLL.ResourceBLL resbll;
-        private IEnumerable<MODAL.ColleageModel> colleageModelList;
-        private IEnumerable<MODAL.WeiKeModel> newlist;
+        private IEnumerable<MODEL.ColleageModel> colleageModelList;
+        private IEnumerable<MODEL.WeiKeModel> newlist;
         //[OutputCache(Duration = 3 * 60 * 60)]
         public ActionResult Index()
         {

@@ -13,11 +13,11 @@ namespace ZY.WEIKE.BLL
         {
             dal = DALFACTORY.AbstractFactory.CreateWordsDALInstance();
         }
-        public IEnumerable<MODAL.WordsModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WordsModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             return dal.LoadPageEntities(pageIndex, pageSize, out totalCount, whereLambda, dic, order, isAsc);
         }
-        public bool CreateEntity(MODAL.WordsModel m)
+        public bool CreateEntity(MODEL.WordsModel m)
         {
             return dal.CreateEntity(m) > 0;
         }

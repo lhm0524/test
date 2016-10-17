@@ -14,23 +14,23 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.VotesModel t)
+        public int CreateEntity(MODEL.VotesModel t)
         {
 
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.VotesModel t)
+        public int EditEntity(MODEL.VotesModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.VotesModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.VotesModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.VotesModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.VotesModel GetModelByPrimaryKey(int primaryKey)
         {
             throw new NotImplementedException();
         }
@@ -40,15 +40,15 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.VotesModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.VotesModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
 
-        public MODAL.VotesModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.VotesModel GetEntity(string where, Dictionary<string, object> dic)
         {
-            MODAL.VotesModel m = new MODAL.VotesModel();
+            MODEL.VotesModel m = new MODEL.VotesModel();
             string sql = "select Z_Id,Z_WeikeId, Z_star_1,Z_star_2,Z_star_3,Z_star_4,Z_star_5 from votes";
             if (where.Length != 0)
             {
@@ -85,7 +85,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public int Vote(int userid, MODAL.VotesModel m)
+        public int Vote(int userid, MODEL.VotesModel m)
         {
             string check = "select count(1) from votesview where Z_userid=@uid and Z_weikeid=@wid";
             SqlParameter[] checkps = new SqlParameter[]
@@ -101,7 +101,7 @@ namespace ZY.WEIKE.MSSQLDAL
             int res = (int)SqlHelper.ExecuteNonQuery(CheckStar(vote, m), System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter() { ParameterName = "@wid", Value = m.Z_WeiKeId } });
             return res;
         }
-        private string CheckStar(string sql, MODAL.VotesModel m)
+        private string CheckStar(string sql, MODEL.VotesModel m)
         {
             if (m.Z_Star_1 != null)
             {

@@ -19,7 +19,7 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
             colleageBLL = new BLL.ColleageBLL();
             departmentBLL = new BLL.DepartmentBLL();
             weikeBLL = new BLL.WeiKeBLL();
-            IEnumerable<MODAL.ColleageModel> colleagemodel = colleageBLL.LoadEntites("", null, "", false);
+            IEnumerable<MODEL.ColleageModel> colleagemodel = colleageBLL.LoadEntites("", null, "", false);
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", 7);
             int count = weikeBLL.GetAllPageCountForWhere("teacherId=@id", dic);
@@ -31,16 +31,16 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
         public ActionResult Add()
         {
             colleageBLL = new BLL.ColleageBLL();
-            IEnumerable<MODAL.ColleageModel> colleagemodel = colleageBLL.LoadEntites("", null, "", false);
+            IEnumerable<MODEL.ColleageModel> colleagemodel = colleageBLL.LoadEntites("", null, "", false);
             ViewData.Add("list_colleagemodel", colleagemodel);
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(MODAL.WeiKeModel entity)
+        public ActionResult Add(MODEL.WeiKeModel entity)
         {
             string serverpath = Server.MapPath(COMMONHELPER.CacheHelper.Get("filespath").ToString());
-            MODAL.ResourceModel m = new MODAL.ResourceModel();
+            MODEL.ResourceModel m = new MODEL.ResourceModel();
             weikeBLL = new BLL.WeiKeBLL();
             App_Start.Upload Uploader;
             bool falg = false;
@@ -148,7 +148,7 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
         public ActionResult LoadPageEntity(int pageIndex, int pageSize)
         {
             weikeBLL = new BLL.WeiKeBLL();
-            IEnumerable<MODAL.WeiKeModel> weikemodel = Load(1, 10, "");
+            IEnumerable<MODEL.WeiKeModel> weikemodel = Load(1, 10, "");
             return Json(weikemodel, JsonRequestBehavior.AllowGet);
         }
 
@@ -159,23 +159,23 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", 7);
             int totalCount = 0;
-            IEnumerable<MODAL.WeiKeModel> weikemodel = weikeBLL.Manager_LoadPageEntities(pageIndex, pageSize, "teacherid=@id", dic, "CreateTime", false, out totalCount);
+            IEnumerable<MODEL.WeiKeModel> weikemodel = weikeBLL.Manager_LoadPageEntities(pageIndex, pageSize, "teacherid=@id", dic, "CreateTime", false, out totalCount);
             List<object> res = new List<object>();
-            foreach (MODAL.WeiKeModel item in weikemodel)
+            foreach (MODEL.WeiKeModel item in weikemodel)
             {
                 res.Add(new { Id = item.Id, Name = item.Name, TypeId = departmentBLL.GetEntityByPrimarykey(item.TypeId).Name, CreateTime = item.CreateTime });
             }
             var jsonresult = new { totalCount = totalCount, Data = res };
             return Json(jsonresult, JsonRequestBehavior.DenyGet);
         }
-        private IEnumerable<MODAL.WeiKeModel> Load(int pageIndex, int pageSize, string keyword)
+        private IEnumerable<MODEL.WeiKeModel> Load(int pageIndex, int pageSize, string keyword)
         {
             weikeBLL = new BLL.WeiKeBLL();
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("@id", 7);
             dic.Add("@keyword", '%' + keyword + '%');
             int totalCount = 0;
-            IEnumerable<MODAL.WeiKeModel> weikemodel = weikeBLL.Manager_LoadPageEntities(pageIndex, 10, "teacherid=@id and name like @keyword", dic, "", false, out totalCount);
+            IEnumerable<MODEL.WeiKeModel> weikemodel = weikeBLL.Manager_LoadPageEntities(pageIndex, 10, "teacherid=@id and name like @keyword", dic, "", false, out totalCount);
             return weikemodel;
         }
 

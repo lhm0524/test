@@ -15,7 +15,7 @@ namespace ZY.WEIKE.UI.Controllers
         [Filter.StudentFilter]
         public ActionResult Index()
         {
-            MODAL.UsersModel imagename;
+            MODEL.UsersModel imagename;
             UserBll = new BLL.UsersBLL();
             imagename = UserBll.LoadImageAndName((int)Session["Id"]);
             ViewData.Model = imagename;
@@ -38,10 +38,10 @@ namespace ZY.WEIKE.UI.Controllers
         }
 
         [Filter.StudentFilter]
-        public ActionResult EditEntity(MODAL.UsersModel w, string oldpwd)
+        public ActionResult EditEntity(MODEL.UsersModel w, string oldpwd)
         {
             UserBll = new BLL.UsersBLL();
-            MODAL.UsersModel model = UserBll.GetEntity((int)Session["Id"]);
+            MODEL.UsersModel model = UserBll.GetEntity((int)Session["Id"]);
             if (UserBll.IsExist(w))
             {
                 return Json(new { state = "failed", msg = "已存在相同的用户，请重试！" }, JsonRequestBehavior.AllowGet);
@@ -72,7 +72,7 @@ namespace ZY.WEIKE.UI.Controllers
         public ActionResult Image()
         {
             UserBll = new BLL.UsersBLL();
-            MODAL.UsersModel m = UserBll.LoadImageAndName((int)Session["Id"]);
+            MODEL.UsersModel m = UserBll.LoadImageAndName((int)Session["Id"]);
             object imagepath = m.UserImagePath == null ? "default-personal.png" : m.UserImagePath;
             ViewBag.ImagePath = "/Users/UserImg/" + imagepath.ToString();
             return View();
@@ -116,7 +116,7 @@ namespace ZY.WEIKE.UI.Controllers
         public ActionResult GetUserImg(int Id)
         {
             UserBll = new BLL.UsersBLL();
-            MODAL.UsersModel m = UserBll.LoadImageAndName(Id);
+            MODEL.UsersModel m = UserBll.LoadImageAndName(Id);
             return File(Server.MapPath("~/Users/UserImg/") + (m.UserImagePath == null ? "default-personal.png" : m.UserImagePath), "image/jpeg");
         }
 
@@ -161,7 +161,7 @@ namespace ZY.WEIKE.UI.Controllers
         }
         
         [HttpPost]
-        public ActionResult Register(MODAL.UsersModel user)
+        public ActionResult Register(MODEL.UsersModel user)
         {
             if (UserBll.IsExist(user))
             {

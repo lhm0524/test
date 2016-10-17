@@ -14,17 +14,17 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.ColleageModel t)
+        public int CreateEntity(MODEL.ColleageModel t)
         {
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.ColleageModel t)
+        public int EditEntity(MODEL.ColleageModel t)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.ColleageModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.ColleageModel GetModelByPrimaryKey(int primaryKey)
         {
             throw new NotImplementedException();
         }
@@ -34,16 +34,16 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.ColleageModel> GetTopList(int top)
+        public IEnumerable<MODEL.ColleageModel> GetTopList(int top)
         {
-            List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
+            List<MODEL.ColleageModel> list = new List<MODEL.ColleageModel>();
             string sql = string.Format("select top {0} Id,Name from Colleage", top);
             SqlDataReader reader;
             using (reader = SqlHelper.ExecuteReader(sql, null))
             {
                 while (reader.Read())
                 {
-                    MODAL.ColleageModel m = new MODAL.ColleageModel();
+                    MODEL.ColleageModel m = new MODEL.ColleageModel();
                     m.Id = reader.GetInt32(0);
                     m.Name = reader.GetString(1);
                     list.Add(m);
@@ -53,10 +53,10 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public IEnumerable<MODAL.ColleageModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.ColleageModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             string sql = "select Id, Name from Colleage";
-            List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
+            List<MODEL.ColleageModel> list = new List<MODEL.ColleageModel>();
             sql = SqlHelper.BuildSql(sql, where, order, isAsc);
             using (SqlDataReader reader = SqlHelper.ExecuteReader(sql, null))
             {
@@ -66,7 +66,7 @@ namespace ZY.WEIKE.MSSQLDAL
                 }
                 while (reader.Read())
                 {
-                    MODAL.ColleageModel m = new MODAL.ColleageModel();
+                    MODEL.ColleageModel m = new MODEL.ColleageModel();
                     m.Id = reader.GetInt32(0);
                     m.Name = reader.GetString(1);
                     list.Add(m);
@@ -75,7 +75,7 @@ namespace ZY.WEIKE.MSSQLDAL
             return list;
         }
 
-        public IEnumerable<MODAL.ColleageModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.ColleageModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             string sql = "select Id,Name from(select row_number() over (order by Id) as num,* from Colleage) AS t where num >= (@PageIndex - 1) * @PageSize + 1 and num <= @PageSize * @PageIndex";
 
@@ -92,10 +92,10 @@ namespace ZY.WEIKE.MSSQLDAL
                 ps.Union(ps1);
             }
             SqlDataReader reader = SqlHelper.ExecuteReader(sql, ps);
-            List<MODAL.ColleageModel> list = new List<MODAL.ColleageModel>();
+            List<MODEL.ColleageModel> list = new List<MODEL.ColleageModel>();
             while (reader.Read())
             {
-                MODAL.ColleageModel m = new MODAL.ColleageModel();
+                MODEL.ColleageModel m = new MODEL.ColleageModel();
                 m.Id = reader.GetInt32(0);
                 m.Name = reader.GetString(1);
                 list.Add(m);
@@ -106,7 +106,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public MODAL.ColleageModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.ColleageModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

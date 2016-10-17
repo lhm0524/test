@@ -10,9 +10,9 @@ namespace ZY.WEIKE.MSSQLDAL
 {
     public class DeparmentDAL : IDAL.IDepartmentDAL
     {
-        public IEnumerable<MODAL.DepartmentModel> LoadByParentID(int parentId)
+        public IEnumerable<MODEL.DepartmentModel> LoadByParentID(int parentId)
         {
-            List<MODAL.DepartmentModel> list = new List<MODAL.DepartmentModel>();
+            List<MODEL.DepartmentModel> list = new List<MODEL.DepartmentModel>();
 
             string sql = "select Id,Name from Department where parentId=@id";
 
@@ -21,7 +21,7 @@ namespace ZY.WEIKE.MSSQLDAL
             {
                 while (reader.Read())
                 {
-                    MODAL.DepartmentModel m = new MODAL.DepartmentModel();
+                    MODEL.DepartmentModel m = new MODEL.DepartmentModel();
                     m.Id = reader.GetInt32(0);
                     m.Name = reader.GetString(1);
                     list.Add(m);
@@ -35,22 +35,22 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.DepartmentModel t)
+        public int CreateEntity(MODEL.DepartmentModel t)
         {
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.DepartmentModel t)
+        public int EditEntity(MODEL.DepartmentModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.DepartmentModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.DepartmentModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.DepartmentModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.DepartmentModel GetModelByPrimaryKey(int primaryKey)
         {
             string sql = "select Id, ParentId, Name from department where Id=@id";
             SqlParameter[] ps = new SqlParameter[]
@@ -64,7 +64,7 @@ namespace ZY.WEIKE.MSSQLDAL
                     return null;
                 }
                 reader.Read();
-                MODAL.DepartmentModel m = new MODAL.DepartmentModel();
+                MODEL.DepartmentModel m = new MODEL.DepartmentModel();
                 m.Id = reader.GetInt32(0);
                 m.Parentid = reader.GetInt32(1);
                 m.Name = reader.GetString(2);
@@ -77,13 +77,13 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.DepartmentModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.DepartmentModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
 
-        public MODAL.DepartmentModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.DepartmentModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

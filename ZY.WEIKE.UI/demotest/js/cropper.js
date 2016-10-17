@@ -37,7 +37,7 @@
   var NAMESPACE = 'cropper';
 
   // Classes
-  var CLASS_MODAL = 'cropper-modal';
+  var CLASS_MODEL = 'cropper-MODEL';
   var CLASS_HIDE = 'cropper-hide';
   var CLASS_HIDDEN = 'cropper-hidden';
   var CLASS_INVISIBLE = 'cropper-invisible';
@@ -701,8 +701,8 @@
       if (options.autoCrop) {
         this.isCropped = true;
 
-        if (options.modal) {
-          this.$dragBox.addClass(CLASS_MODAL);
+        if (options.MODEL) {
+          this.$dragBox.addClass(CLASS_MODEL);
         }
       } else {
         $cropBox.addClass(CLASS_HIDDEN);
@@ -1563,7 +1563,7 @@
 
         if (action === ACTION_CROP) {
           this.cropping = true;
-          this.$dragBox.addClass(CLASS_MODAL);
+          this.$dragBox.addClass(CLASS_MODEL);
         }
       }
     },
@@ -1626,7 +1626,7 @@
 
         if (this.cropping) {
           this.cropping = false;
-          this.$dragBox.toggleClass(CLASS_MODAL, this.isCropped && this.options.modal);
+          this.$dragBox.toggleClass(CLASS_MODEL, this.isCropped && this.options.MODEL);
         }
 
         this.action = '';
@@ -2051,8 +2051,8 @@
         this.isCropped = true;
         this.limitCropBox(true, true);
 
-        if (this.options.modal) {
-          this.$dragBox.addClass(CLASS_MODAL);
+        if (this.options.MODEL) {
+          this.$dragBox.addClass(CLASS_MODEL);
         }
 
         this.$cropBox.removeClass(CLASS_HIDDEN);
@@ -2099,7 +2099,7 @@
       // Render canvas after crop box rendered
       this.renderCanvas();
 
-      this.$dragBox.removeClass(CLASS_MODAL);
+      this.$dragBox.removeClass(CLASS_MODEL);
       this.$cropBox.addClass(CLASS_HIDDEN);
     },
 
@@ -2861,8 +2861,8 @@
     // Check the current image's Exif Orientation information
     checkOrientation: true,
 
-    // Show the black modal
-    modal: true,
+    // Show the black MODEL
+    MODEL: true,
 
     // Show the dashed lines for guiding
     guides: true,
@@ -2870,7 +2870,7 @@
     // Show the center indicator for guiding
     center: true,
 
-    // Show the white modal to highlight the crop box
+    // Show the white MODEL to highlight the crop box
     highlight: true,
 
     // Show the grid background

@@ -15,22 +15,22 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public int CreateEntity(MODAL.WK_UserLogModel t)
+        public int CreateEntity(MODEL.WK_UserLogModel t)
         {
             throw new NotImplementedException();
         }
 
-        public int EditEntity(MODAL.WK_UserLogModel t)
+        public int EditEntity(MODEL.WK_UserLogModel t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.WK_UserLogModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WK_UserLogModel> LoadEntities(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
 
-        public MODAL.WK_UserLogModel GetModelByPrimaryKey(int primaryKey)
+        public MODEL.WK_UserLogModel GetModelByPrimaryKey(int primaryKey)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace ZY.WEIKE.MSSQLDAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MODAL.WK_UserLogModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.WK_UserLogModel> LoadPageEntities(int pageIndex, int pageSize, out int totalCount, string whereLambda, Dictionary<string, object> dic, string order, bool isAsc)
         {
             throw new NotImplementedException();
         }
@@ -57,7 +57,7 @@ namespace ZY.WEIKE.MSSQLDAL
         }
 
 
-        public MODAL.WK_UserLogModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.WK_UserLogModel GetEntity(string where, Dictionary<string, object> dic)
         {
             throw new NotImplementedException();
         }

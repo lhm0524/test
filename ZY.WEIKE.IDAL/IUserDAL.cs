@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZY.WEIKE.IDAL
 {
-    public interface IUserDAL : IBaseDAL<MODAL.UsersModel>
+    public interface IUserDAL : IBaseDAL<MODEL.UsersModel>
     {
         int Login(int logintype, string name, string pwd, out object role);
-        MODAL.UsersModel GetImageAndName(int primaryKey);
-        int IsExists(MODAL.UsersModel usermodel);
+        MODEL.UsersModel GetImageAndName(int primaryKey);
+        int IsExists(MODEL.UsersModel usermodel);
         int EditImage(int primarykey, string imagepath);
     }
 }

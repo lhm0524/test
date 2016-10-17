@@ -8,7 +8,7 @@ function BindEvent() {
         document.getElementById('woman').checked = true;
     });
     $("#sexbar").on('click', function () {
-        $('#sex-modal').modal({
+        $('#sex-MODEL').MODEL({
             onConfirm: function () {
                 span.textContent = document.getElementById('man').checked == true ? '男' : '女';
             }
@@ -17,15 +17,15 @@ function BindEvent() {
     document.getElementById('btn_logout').addEventListener('click', Logout);
     document.getElementById('email').addEventListener('click', function (e) {
         targetelement = e.currentTarget;
-        modalsetting('邮箱');
+        MODELsetting('邮箱');
     });
     document.getElementById('username').addEventListener('click', function (e) {
         targetelement = e.currentTarget;
-        modalsetting('用户名');
+        MODELsetting('用户名');
     });
     document.getElementById('birthday').addEventListener('click', function (e) {
         targetelement = e.currentTarget;
-        modalsetting('出生日期');
+        MODELsetting('出生日期');
         //e.target.
     });
     document.getElementById('btn_ensure').addEventListener('click', btnensure);
@@ -34,7 +34,7 @@ function BindEvent() {
 }
 
 
-function modalsetting(text) {
+function MODELsetting(text) {
     var edittitle = document.getElementById('edittitle');
     edittitle.textContent = text;
     document.getElementById('edittext').setAttribute('type', 'text');
@@ -48,7 +48,7 @@ function modalsetting(text) {
     }
     //return;
     document.getElementById('edittext').value = targetelement.querySelector('span').textContent;
-    $('#editmodal').modal('open');
+    $('#editMODEL').MODEL('open');
 }
 
 function Logout(e) {

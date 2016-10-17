@@ -38,7 +38,7 @@
 .cropper-canvas,
 .cropper-drag-box,
 .cropper-crop-box,
-.cropper-modal {
+.cropper-MODEL {
   position: absolute;
   top: 0;
   right: 0;
@@ -57,7 +57,7 @@
   filter: alpha(opacity=0);
 }
 
-.cropper-modal {
+.cropper-MODEL {
   opacity: .5;
   background-color: #000;
 

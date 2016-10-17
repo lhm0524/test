@@ -13,11 +13,11 @@ namespace ZY.WEIKE.BLL
         {
             dal = DALFACTORY.AbstractFactory.CreateColleageDALInstance();
         }
-        public IEnumerable<MODAL.ColleageModel> GetTopList(int top)
+        public IEnumerable<MODEL.ColleageModel> GetTopList(int top)
         {
             return dal.GetTopList(top);
         }
-        public IEnumerable<MODAL.ColleageModel> LoadEntites(string where, Dictionary<string, object> dic, string order, bool isAsc)
+        public IEnumerable<MODEL.ColleageModel> LoadEntites(string where, Dictionary<string, object> dic, string order, bool isAsc)
         {
             return dal.LoadEntities(where, dic, order, isAsc);
         }

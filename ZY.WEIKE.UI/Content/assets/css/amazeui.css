@@ -8887,13 +8887,13 @@ ul.am-dropdown-content > .am-disabled > a:focus {
 }
 /*
 TODO:
-  1. 动画应该放在 dialog 上，不再是整个 modal，涉及 JS 逻辑，需要统筹修改
-  2. modal 滚动条处理，是否需要添加一个滚动条宽度的水平 padding？
+  1. 动画应该放在 dialog 上，不再是整个 MODEL，涉及 JS 逻辑，需要统筹修改
+  2. MODEL 滚动条处理，是否需要添加一个滚动条宽度的水平 padding？
 */
 /* ==========================================================================
-   Component: Modal Plugin
+   Component: MODEL Plugin
  ============================================================================ */
-.am-modal {
+.am-MODEL {
   position: fixed;
   top: 0;
   right: 0;
@@ -8916,10 +8916,10 @@ TODO:
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
-.am-modal:focus {
+.am-MODEL:focus {
   outline: 0;
 }
-.am-modal.am-modal-active {
+.am-MODEL.am-MODEL-active {
   opacity: 1;
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
@@ -8929,7 +8929,7 @@ TODO:
   overflow-x: hidden;
   overflow-y: auto;
 }
-.am-modal.am-modal-out {
+.am-MODEL.am-MODEL-out {
   opacity: 0;
   z-index: 1109;
   -webkit-transition-duration: 300ms;
@@ -8938,13 +8938,13 @@ TODO:
       -ms-transform: scale(0.815);
           transform: scale(0.815);
 }
-.am-modal:before {
+.am-MODEL:before {
   content: "\200B";
   display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
-.am-modal-dialog {
+.am-MODEL-dialog {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -8955,38 +8955,38 @@ TODO:
   border-radius: 0;
   background: #f8f8f8;
   /*@media @large-up {
-    width: @modal-lg;
-    margin-left: -@modal-lg/2;
+    width: @MODEL-lg;
+    margin-left: -@MODEL-lg/2;
   }*/
 }
 @media only screen and (min-width:641px) {
-  .am-modal-dialog {
+  .am-MODEL-dialog {
     width: 540px;
   }
 }
-.am-modal-hd {
+.am-MODEL-hd {
   padding: 15px 10px 5px 10px;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.am-modal-hd + .am-modal-bd {
+.am-MODEL-hd + .am-MODEL-bd {
   padding-top: 0;
 }
-.am-modal-hd .am-close {
+.am-MODEL-hd .am-close {
   position: absolute;
   top: 4px;
   right: 4px;
 }
-.am-modal-bd {
+.am-MODEL-bd {
   padding: 15px 10px;
   text-align: center;
   border-bottom: 1px solid #dedede;
   border-radius: 2px 2px 0 0;
 }
-.am-modal-bd + .am-modal-bd {
+.am-MODEL-bd + .am-MODEL-bd {
   margin-top: 5px;
 }
-.am-modal-prompt-input {
+.am-MODEL-prompt-input {
   display: block;
   margin: 5px auto 0 auto;
   border-radius: 0;
@@ -8999,18 +8999,18 @@ TODO:
   -ms-appearance: none;
   appearance: none;
 }
-.am-modal-prompt-input:focus {
+.am-MODEL-prompt-input:focus {
   outline: none;
   border-color: #d6d6d6;
 }
-.am-modal-footer {
+.am-MODEL-footer {
   height: 44px;
   overflow: hidden;
   display: table;
   width: 100%;
   border-collapse: collapse;
 }
-.am-modal-btn {
+.am-MODEL-btn {
   display: table-cell !important;
   padding: 0 5px;
   height: 44px;
@@ -9029,46 +9029,46 @@ TODO:
   cursor: pointer;
   border-right: 1px solid #dedede;
 }
-.am-modal-btn:first-child {
+.am-MODEL-btn:first-child {
   border-radius: 0 0 0 0;
 }
-.am-modal-btn:last-child {
+.am-MODEL-btn:last-child {
   border-right: none;
   border-radius: 0 0 0 0;
 }
-.am-modal-btn:first-child:last-child {
+.am-MODEL-btn:first-child:last-child {
   border-radius: 0 0 0 0;
 }
-.am-modal-btn.am-modal-btn-bold {
+.am-MODEL-btn.am-MODEL-btn-bold {
   font-weight: 500;
 }
-.am-modal-btn:active {
+.am-MODEL-btn:active {
   background: #d4d4d4;
 }
-.am-modal-btn + .am-modal-btn {
+.am-MODEL-btn + .am-MODEL-btn {
   border-left: 1px solid #dedede;
 }
-.am-modal-no-btn .am-modal-dialog {
+.am-MODEL-no-btn .am-MODEL-dialog {
   border-radius: 0;
   border-bottom: none;
 }
-.am-modal-no-btn .am-modal-bd {
+.am-MODEL-no-btn .am-MODEL-bd {
   border-bottom: none;
 }
-.am-modal-no-btn .am-modal-footer {
+.am-MODEL-no-btn .am-MODEL-footer {
   display: none;
 }
-.am-modal-loading .am-modal-bd {
+.am-MODEL-loading .am-MODEL-bd {
   border-bottom: none;
 }
-.am-modal-loading .am-icon-spin {
+.am-MODEL-loading .am-icon-spin {
   display: inline-block;
   font-size: 2.4rem;
 }
-.am-modal-loading .am-modal-footer {
+.am-MODEL-loading .am-MODEL-footer {
   display: none;
 }
-.am-modal-actions {
+.am-MODEL-actions {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -9087,25 +9087,25 @@ TODO:
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms;
 }
-.am-modal-actions.am-modal-active {
+.am-MODEL-actions.am-MODEL-active {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
 }
-.am-modal-actions.am-modal-out {
+.am-MODEL-actions.am-MODEL-out {
   z-index: 1109;
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
           transform: translateY(100%);
 }
-.am-modal-actions-group {
+.am-MODEL-actions-group {
   margin: 10px;
 }
-.am-modal-actions-group .am-list {
+.am-MODEL-actions-group .am-list {
   margin: 0;
   border-radius: 0;
 }
-.am-modal-actions-group .am-list > li {
+.am-MODEL-actions-group .am-list > li {
   margin-bottom: 0;
   border-bottom: none;
   display: block;
@@ -9117,7 +9117,7 @@ TODO:
   -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.015);
           box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.015);
 }
-.am-modal-actions-group .am-list > li > a {
+.am-MODEL-actions-group .am-list > li > a {
   padding: 1rem;
   display: block;
   word-wrap: normal;
@@ -9126,25 +9126,25 @@ TODO:
   white-space: nowrap;
   overflow: hidden;
 }
-.am-modal-actions-group .am-list > li:first-child {
+.am-MODEL-actions-group .am-list > li:first-child {
   border-top: none;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-.am-modal-actions-group .am-list > li:last-child {
+.am-MODEL-actions-group .am-list > li:last-child {
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.am-modal-actions-header {
+.am-MODEL-actions-header {
   padding: 1rem;
   color: #999999;
   font-size: 1.4rem;
 }
-.am-modal-actions-danger {
+.am-MODEL-actions-danger {
   color: #dd514c;
 }
-.am-modal-actions-danger a {
+.am-MODEL-actions-danger a {
   color: inherit;
 }
 .am-popup {
@@ -9165,17 +9165,17 @@ TODO:
       -ms-transform: translateY(100%);
           transform: translateY(100%);
 }
-.am-popup.am-modal-active,
-.am-popup.am-modal-out {
+.am-popup.am-MODEL-active,
+.am-popup.am-MODEL-out {
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
 }
-.am-popup.am-modal-active {
+.am-popup.am-MODEL-active {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
 }
-.am-popup.am-modal-out {
+.am-popup.am-MODEL-out {
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
           transform: translateY(100%);
@@ -9192,12 +9192,12 @@ TODO:
         -ms-transform: translateY(1024px);
             transform: translateY(1024px);
   }
-  .am-popup.am-modal-active {
+  .am-popup.am-MODEL-active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
             transform: translateY(0);
   }
-  .am-popup.am-modal-out {
+  .am-popup.am-MODEL-out {
     -webkit-transform: translateY(1024px);
         -ms-transform: translateY(1024px);
             transform: translateY(1024px);
@@ -9693,11 +9693,11 @@ TODO:
   font-size: 14px;
   color: #777;
 }
-.am-share-wechat-qr .am-modal-dialog {
+.am-share-wechat-qr .am-MODEL-dialog {
   background-color: #fff;
   border: 1px solid #dedede;
 }
-.am-share-wechat-qr .am-modal-hd {
+.am-share-wechat-qr .am-MODEL-hd {
   padding-top: 10px;
   text-align: left;
   margin-bottom: 10px;
@@ -10024,7 +10024,7 @@ TODO:
       -ms-text-size-adjust: none;
           text-size-adjust: none;
 }
-.ath-modal {
+.ath-MODEL {
   pointer-events: auto !important;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -11101,10 +11101,10 @@ tbody.am-collapse.am-in {
   background-color: #000;
   filter: alpha(opacity=60);
 }
-.lte8 .am-modal-actions {
+.lte8 .am-MODEL-actions {
   display: none;
 }
-.lte8 .am-modal-actions.am-modal-active {
+.lte8 .am-MODEL-actions.am-MODEL-active {
   display: block;
 }
 .lte8 .am-offcanvas.am-active {
@@ -11409,7 +11409,7 @@ tbody.am-collapse.am-in {
   text-align: left;
   padding-left: 10px;
 }
-.am-modal-footer-hd {
+.am-MODEL-footer-hd {
   padding-bottom: 10px;
 }
 /**
@@ -12832,7 +12832,7 @@ tbody.am-collapse.am-in {
   height: 220px;
   margin-left: -110px;
 }
-#am-navbar-qrcode .am-modal-bd {
+#am-navbar-qrcode .am-MODEL-bd {
   padding: 10px;
 }
 #am-navbar-qrcode canvas {

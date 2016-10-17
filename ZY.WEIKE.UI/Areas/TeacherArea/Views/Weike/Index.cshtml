@@ -27,7 +27,7 @@
         <div class="am-form-group">
             <select id="select_colleage" data-am-selected="{searchBox: 1}">
                 <option value="0">全部</option>
-                @foreach (var item in (IEnumerable<ZY.WEIKE.MODAL.ColleageModel>)ViewData["list_colleagemodel"])
+                @foreach (var item in (IEnumerable<ZY.WEIKE.MODEL.ColleageModel>)ViewData["list_colleagemodel"])
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
@@ -90,15 +90,15 @@
     </div>
 
 </div>
-<div class="am-modal am-modal-confirm" tabindex="-1" id="Modal-Delete">
-    <div class="am-modal-dialog">
-        <div class="am-modal-hd">温馨提示</div>
-        <div class="am-modal-bd">
+<div class="am-MODEL am-MODEL-confirm" tabindex="-1" id="MODEL-Delete">
+    <div class="am-MODEL-dialog">
+        <div class="am-MODEL-hd">温馨提示</div>
+        <div class="am-MODEL-bd">
             你，确定要删除吗？
         </div>
-        <div class="am-modal-footer">
-            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-            <span class="am-modal-btn" id="confirm" data-am-modal-confirm>确定</span>
+        <div class="am-MODEL-footer">
+            <span class="am-MODEL-btn" data-am-MODEL-cancel>取消</span>
+            <span class="am-MODEL-btn" id="confirm" data-am-MODEL-confirm>确定</span>
         </div>
     </div>
 </div>

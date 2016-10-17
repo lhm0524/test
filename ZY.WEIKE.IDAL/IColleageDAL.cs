@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZY.WEIKE.IDAL
 {
-    public interface IColleageDAL : IBaseDAL<MODAL.ColleageModel>
+    public interface IColleageDAL : IBaseDAL<MODEL.ColleageModel>
     {
-        IEnumerable<MODAL.ColleageModel> GetTopList(int top);
+        IEnumerable<MODEL.ColleageModel> GetTopList(int top);
     }
 }

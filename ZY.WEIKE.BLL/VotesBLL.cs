@@ -14,11 +14,11 @@ namespace ZY.WEIKE.BLL
             dal = DALFACTORY.AbstractFactory.CreateVotesDALInstance();
         }
 
-        public MODAL.VotesModel GetEntity(string where, Dictionary<string, object> dic)
+        public MODEL.VotesModel GetEntity(string where, Dictionary<string, object> dic)
         {
             return dal.GetEntity(where, dic);
         }
-        public int Vote(int userid, MODAL.VotesModel m)
+        public int Vote(int userid, MODEL.VotesModel m)
         {
             return dal.Vote(userid, m);
         }
