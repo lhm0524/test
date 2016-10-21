@@ -233,7 +233,7 @@ function endevent()
 {
     MylocalStroge.RemoveItem(urlid);
     var data = {};
-    data.wid = urlid;
+    data.wid = urlid;//ddddd
     data.finish = true;
     $.post('/Play/AddFinishLog/', data, function (json) {
         console.info(json);
