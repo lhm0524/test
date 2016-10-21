@@ -15,6 +15,7 @@ namespace ZY.WEIKE.UI.Controllers
         public BLL.WordsBLL worbll { get; set; }
         public BLL.UsersBLL userbll { get; set; }
         public BLL.VotesBLL votesbll { get; set; }
+        public BLL.UserLogBLL userlogbll { get; set; }
         //[OutputCache(Duration = 1 * 60 * 60)]
         public ActionResult Index(int id)
         {
@@ -85,6 +86,7 @@ namespace ZY.WEIKE.UI.Controllers
             int res = votesbll.Vote((int)Session["Id"], ll(score, id));
             return Json(new { state =  res > 0 });
         }
+
         private MODEL.VotesModel ll(int score, int id)
         {
             MODEL.VotesModel m = new MODEL.VotesModel();
@@ -110,5 +112,24 @@ namespace ZY.WEIKE.UI.Controllers
             return m;
         }
 
+
+        public ActionResult AddFinishLog(int wid, bool finish)
+        {
+            if (Session["Id"] == null)
+            {
+                return Json(new { state = "no log" }, JsonRequestBehavior.AllowGet);
+            }
+            userlogbll = new BLL.UserLogBLL();
+            MODEL.UserLogModel m = new MODEL.UserLogModel();
+            m.Isfinish = finish;
+            m.Z_WeiKeId = wid;
+            m.Z_UserId = (int)Session["Id"];
+            string msg = "failed";
+            if (userlogbll.CreateEntity(m))
+            {
+                msg = "success";
+            }
+            return Json(new { state = msg }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

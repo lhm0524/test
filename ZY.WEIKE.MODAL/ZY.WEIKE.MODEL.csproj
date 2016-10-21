@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ColleageModel.cs" />
     <Compile Include="DepartmentModel.cs" />
+    <Compile Include="DoNetParameter.cs" />
     <Compile Include="MessagesModel.cs" />
     <Compile Include="MessagesTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,7 +50,7 @@
     <Compile Include="UsersModel.cs" />
     <Compile Include="VotesModel.cs" />
     <Compile Include="WeiKeModel.cs" />
-    <Compile Include="WK_UserLogModel.cs" />
+    <Compile Include="UserLogModel.cs" />
     <Compile Include="WordsModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,7 @@ namespace ZY.WEIKE.UI.Controllers
         [Filter.StudentFilter]
         public ActionResult Index()
         {
+            
             MODEL.UsersModel imagename;
             UserBll = new BLL.UsersBLL();
             imagename = UserBll.LoadImageAndName((int)Session["Id"]);

@@ -83,7 +83,7 @@
             @Model.Name
         </div>
     </header>
-    <video id="v_Course" style="width: 100%" controls="controls" preload="auto" poster="/Users/@(((ResourceModel)ViewData["res"]).VideoImgPath)">
+    <video id="v_Course" onplay="playecent()" onended="endevent()" style="width: 100%" controls="controls" preload="auto" poster="/Users/@(((ResourceModel)ViewData["res"]).VideoImgPath)">
         <source src="/Users/@(((ResourceModel)ViewData["res"]).VideoPath)" type="video/mp4" />
         Your browser does not support the video tag.
     </video>
@@ -156,6 +156,7 @@
         //console.info(VideoEntity.volume);
         video.volume = parseFloat(VideoEntity.volume);
         video.currentTime = parseFloat(VideoEntity.currentTime);
+        //ListenerVideoEnded();
        //等文档加载完成后再设置视频长度 否则会出现视频卡顿问题
     };
     function Rating(jsondata) {

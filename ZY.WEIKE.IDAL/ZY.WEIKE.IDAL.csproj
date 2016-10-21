@@ -49,7 +49,7 @@
     <Compile Include="IUserDAL.cs" />
     <Compile Include="IVotesDAL.cs" />
     <Compile Include="IWeiKeDAL.cs" />
-    <Compile Include="IWK_UserLogDAL.cs" />
+    <Compile Include="IUserLogDAL.cs" />
     <Compile Include="IWordsDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

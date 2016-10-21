@@ -8,6 +8,7 @@ namespace ZY.WEIKE.IDAL
 {
     public interface IBaseDAL<T> where T : class, new()
     {
+
         /// <summary>
         /// 从数据源中删除某条数据
         /// </summary>

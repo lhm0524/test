@@ -32,6 +32,7 @@ namespace ZY.WEIKE.DALFACTORY
                 dal = CreateInstance(NameSpace + ".DeparmentDAL") as IDAL.IDepartmentDAL;
                 COMMONHELPER.CacheHelper.Add("IDAL_DepartmentDAL", dal);
             }
+            
             return dal;
             //return null;
         }
@@ -60,6 +61,7 @@ namespace ZY.WEIKE.DALFACTORY
             }
             return dal;
         }
+
         public static IDAL.IResourceDAL CreateResourceDALInstance()
         {
             IDAL.IResourceDAL dal;
@@ -131,6 +133,18 @@ namespace ZY.WEIKE.DALFACTORY
             {
                 dal = CreateInstance(NameSpace + ".MessagesTypeDAL") as IDAL.IMessagesType;
                 COMMONHELPER.CacheHelper.Add("IDAL_IMessagesType", dal);
+            }
+            return dal;
+        }
+
+        public static IDAL.IUserLogDAL CreateUserLogInstance()
+        {
+            IDAL.IUserLogDAL dal;
+            dal = COMMONHELPER.CacheHelper.Get("IDAL_IUserLogDAL") as IDAL.IUserLogDAL;
+            if (dal == null)
+            {
+                dal = CreateInstance(NameSpace + ".UserLogDAL") as IDAL.IUserLogDAL;
+                COMMONHELPER.CacheHelper.Add("IDAL_IUserLogDAL", dal);
             }
             return dal;
         }

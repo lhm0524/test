@@ -11,7 +11,7 @@ namespace ZY.WEIKE.MODEL
 		public System.Int32 Id { get; set; }
 		public System.Int32 FromUserId { get; set; }
 		public System.Int32 ToUserID { get; set; }
-		public System.Int32 Subject { get; set; }
+        public System.String Subject { get; set; }
 		public System.Int32 MSGTypeId { get; set; }
 		public System.String MSG { get; set; }
 		public System.Boolean State { get; set; }

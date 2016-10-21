@@ -4,6 +4,7 @@ var urlid = location.href.substring(location.href.lastIndexOf('/') + 1);
 var commitview = document.getElementById('commitview');
 var pageindex = 1;
 var video = document.getElementById("v_Course");
+var listen;
 VideoEntity = new Object();
 
 function BindClickEvent() {
@@ -170,6 +171,10 @@ function BindVideoElemtEvent() {
         VideoEntity.volume = vv;
         MylocalStroge.SetItem(urlid, VideoEntity);
     });//音量发生改变
+    //document.getElementById('v_Course').addEventListener('ended', function () {
+    //    console.info('完成');
+    //    MylocalStroge.RemoveItem(urlid);
+    //});
 
 } //绑定video对象的事件
 
@@ -212,3 +217,33 @@ function Load() {
 document.getElementById('print').addEventListener('click', function () {
     console.info(VideoEntity);
 });
+
+function ListenerVideoEnded() {
+    listen = setInterval(function () {
+        if (video.ended) {
+            MylocalStroge.RemoveItem(urlid);
+            console.info('finish');
+            clearInterval(listen);
+        }
+       
+    },
+    300);
+}
+function endevent()
+{
+    MylocalStroge.RemoveItem(urlid);
+    var data = {};
+    data.wid = urlid;
+    data.finish = true;
+    $.post('/Play/AddFinishLog/', data, function (json) {
+        console.info(json);
+    });
+}
+function playecent() {
+    var data = {};
+    data.wid = urlid;
+    data.finish = false;
+    $.post('/Play/AddFinishLog/', data, function (json) {
+        console.info(json);
+    });
+}

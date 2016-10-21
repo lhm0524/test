@@ -36,6 +36,11 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
             return View();
         }
 
+        public ActionResult AddType()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Add(MODEL.WeiKeModel entity)
         {
@@ -168,6 +173,7 @@ namespace ZY.WEIKE.UI.Areas.TeacherArea.Controllers
             var jsonresult = new { totalCount = totalCount, Data = res };
             return Json(jsonresult, JsonRequestBehavior.DenyGet);
         }
+
         private IEnumerable<MODEL.WeiKeModel> Load(int pageIndex, int pageSize, string keyword)
         {
             weikeBLL = new BLL.WeiKeBLL();

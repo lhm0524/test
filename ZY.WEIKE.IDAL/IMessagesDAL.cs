@@ -7,5 +7,6 @@ namespace ZY.WEIKE.IDAL
 {
     public interface IMessagesDAL : IBaseDAL<MODEL.MessagesModel>
     {
+        MODEL.MessagesModel GetMsg(string where, MODEL.DoNetParameter dic, string order, bool isAsc);
     }
 }

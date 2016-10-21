@@ -100,10 +100,8 @@ namespace ZY.WEIKE.UI.App_Start
             AllowExtension = System.Configuration.ConfigurationManager.AppSettings["imageextension"];
             MaxSize = 2 * 1024 * 1024;
         }
-        public ImageUploader(HttpPostedFileBase fi)
+        public ImageUploader(HttpPostedFileBase fi) : this()
         {
-            AllowExtension = System.Configuration.ConfigurationManager.AppSettings["imageextension"];
-            MaxSize = 2 * 1024 * 1024;
             File = fi;
         }
         public override void UploadAction()
