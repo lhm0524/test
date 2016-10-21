@@ -20,7 +20,7 @@ namespace ZY.WEIKE.MSSQLDAL
             string check = "select count(1) from userlog where weikeid=@wid and userid = @uid";
             string sql = "insert into UserLog(weikeid, userid, iscomplete) values(@wid,@uid,@com)";
             SqlParameter[] ps = new SqlParameter[]
-            {
+            {//ddddddd
                 new SqlParameter() { ParameterName = "@wid", Value = t.Z_WeiKeId, DbType = System.Data.DbType.Int32 },
                 new SqlParameter() { ParameterName = "@uid", Value = t.Z_UserId, DbType = System.Data.DbType.Int32 },
                 new SqlParameter() {ParameterName = "@com", Value = t.Isfinish, DbType = System.Data.DbType.Boolean }
